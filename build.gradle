@@ -1,0 +1,134 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.13.RELEASE'
+        springfoxVersion = '2.9.2'
+        junitVersion = '5.5.2'
+        lombokVersion = '1.18.4'
+        jacksonVersion = '2.9.10'
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+}
+
+plugins {
+    id 'java'
+    id 'idea'
+    id 'org.openapi.generator' version '4.2.2'
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'idea'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+    testImplementation.extendsFrom compileOnly
+}
+
+springBoot {
+    buildInfo()
+}
+
+dependencies {
+    implementation "org.slf4j:slf4j-api:1.7.29"
+
+    compile 'io.swagger.parser.v3:swagger-parser-v3:2.0.19'
+    compile 'com.google.guava:guava:28.1-jre' // only needed for javax.annotation.Nonnull
+    compile "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
+    compile "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    compile "com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}"
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-log4j2'
+    compile 'org.springframework.boot:spring-boot-starter-aop'
+    compile 'org.springframework.boot:spring-boot-starter-security'
+    compile "org.springframework.kafka:spring-kafka"
+    compile 'org.springframework.cloud:spring-cloud-starter-oauth2:2.0.1.RELEASE'
+    compile "io.springfox:springfox-swagger2:${springfoxVersion}"
+    compile "io.springfox:springfox-swagger-ui:${springfoxVersion}"
+    compile "io.springfox:springfox-bean-validators:${springfoxVersion}"
+    compile 'org.apache.httpcomponents:httpclient:4.5.12'
+    compile 'javax.xml.bind:jaxb-api:2.3.1'
+    compile 'com.sun.xml.ws:jaxws-ri:2.3.2'
+    runtime 'org.springframework.boot:spring-boot-devtools'
+    compile 'org.jsoup:jsoup:1.11.3'
+    compile 'com.google.cloud:google-cloud-pubsub:1.108.0'
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    testImplementation "org.junit.jupiter:junit-jupiter:$junitVersion"
+
+    testCompile 'org.awaitility:awaitility:4.0.2'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile 'org.springframework.kafka:spring-kafka-test'
+    testCompile 'net.masterthought:cucumber-reporting:3.19.0'
+    testCompile 'org.assertj:assertj-core:3.15.0'
+    testCompile 'org.mockito:mockito-core:2.23.0'
+    testCompile 'org.mockito:mockito-junit-jupiter:2.23.0'
+    testCompile 'com.github.tomakehurst:wiremock:2.25.1'
+    testCompile 'org.hamcrest:hamcrest-library:2.1'
+    testCompile 'org.hamcrest:hamcrest-core:2.1'
+    testCompile 'org.springframework.security:spring-security-test'
+    testCompile 'org.javers:javers-core:3.1.0'
+}
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+task generateListingPojos(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask){
+    inputSpec = "https://api.ecgmove.com/docs/spec/listings".toString()
+    modelPackage = "ecg.move.sellermodel.listing".toString()
+    generatorName = "jaxrs-jersey"
+    outputDir = "$buildDir/gen-sellermodel".toString()
+    apiPackage = "ignorethis"
+    invokerPackage = "ignorethis"
+    modelPackage = "ecg.move.sellermodel.listing"
+    configOptions = [
+            dateLibrary: "legacy"
+    ]
+    systemProperties = [
+            modelDocs: "false"
+    ]
+    logToStderr = true
+}
+
+task deleteUnusedResults(dependsOn: ['generateListingPojos'], type: Delete) {
+    // this removes a number of generated stuff that is not needed (and in parts broken)
+    delete "$buildDir/gen-sellermodel/src/gen/java/ecg/move/sellermodel/ignorethis",
+            "$buildDir/gen-sellermodel/src/gen/java/ignorethis"
+    followSymlinks = true
+}
+task pojoGen(dependsOn: ['deleteUnusedResults'])
+compileJava.dependsOn pojoGen
+
+sourceSets {
+    main.java.srcDirs += "${project.buildDir}/gen-sellermodel/src/gen/java"
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events 'FAILED', 'SKIPPED', "PASSED"
+        showStandardStreams = false
+        exceptionFormat = 'full'
+    }
+}

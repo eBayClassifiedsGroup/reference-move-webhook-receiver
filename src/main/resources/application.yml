@@ -1,0 +1,30 @@
+spring:
+    profiles:
+        active: dev
+
+server:
+    port: 8080
+
+logging:
+    config: classpath:log4j2.xml
+    level:
+        ecg:
+            move: INFO
+
+management:
+    endpoints:
+        web:
+            base-path: /internal
+            exposure:
+                include: health,info,prometheus,ping
+            path-mapping:
+                prometheus: metrics
+        health:
+            show-details: always
+    endpoint:
+        prometheus:
+            enabled: true
+    metrics:
+        export:
+            prometheus:
+                enabled: true
