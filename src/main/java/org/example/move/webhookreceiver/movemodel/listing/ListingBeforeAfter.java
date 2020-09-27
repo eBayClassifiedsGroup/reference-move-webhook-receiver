@@ -1,4 +1,4 @@
-package org.example.move.webhookreceiver.shared.listing;
+package org.example.move.webhookreceiver.movemodel.listing;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;

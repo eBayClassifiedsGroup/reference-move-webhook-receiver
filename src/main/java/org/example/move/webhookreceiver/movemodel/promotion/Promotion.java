@@ -1,4 +1,4 @@
-package org.example.move.webhookreceiver.shared.promotion;
+package org.example.move.webhookreceiver.movemodel.promotion;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

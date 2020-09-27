@@ -1,4 +1,4 @@
-package org.example.move.webhookreceiver.enrichedlisting;
+package org.example.move.webhookreceiver.rest;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

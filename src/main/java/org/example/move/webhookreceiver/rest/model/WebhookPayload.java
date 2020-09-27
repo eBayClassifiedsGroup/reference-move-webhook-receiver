@@ -1,4 +1,4 @@
-package org.example.move.webhookreceiver.enrichedlisting.model;
+package org.example.move.webhookreceiver.rest.model;
 
 public interface WebhookPayload {
 

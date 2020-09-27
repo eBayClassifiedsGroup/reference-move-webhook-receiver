@@ -1,10 +1,10 @@
-package org.example.move.webhookreceiver.shared.dealer;
+package org.example.move.webhookreceiver.movemodel.dealer;
 
-import static org.example.move.webhookreceiver.shared.dealer.AddOn.AUTO_REFRESH;
-import static org.example.move.webhookreceiver.shared.dealer.AddOn.DEALER_LOGO_ON_VIP;
-import static org.example.move.webhookreceiver.shared.dealer.AddOn.DEALER_PAGE_BASIC;
-import static org.example.move.webhookreceiver.shared.dealer.AddOn.DEALER_PAGE_ENHANCED;
-import static org.example.move.webhookreceiver.shared.dealer.AddOn.HIDE_RELATED_LISTINGS_ON_VIP;
+import static org.example.move.webhookreceiver.movemodel.dealer.AddOn.AUTO_REFRESH;
+import static org.example.move.webhookreceiver.movemodel.dealer.AddOn.DEALER_LOGO_ON_VIP;
+import static org.example.move.webhookreceiver.movemodel.dealer.AddOn.DEALER_PAGE_BASIC;
+import static org.example.move.webhookreceiver.movemodel.dealer.AddOn.DEALER_PAGE_ENHANCED;
+import static org.example.move.webhookreceiver.movemodel.dealer.AddOn.HIDE_RELATED_LISTINGS_ON_VIP;
 
 import java.util.Set;
 

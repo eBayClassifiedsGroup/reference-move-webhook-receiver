@@ -1,4 +1,4 @@
-package org.example.move.webhookreceiver.shared.dealer;
+package org.example.move.webhookreceiver.movemodel.dealer;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;

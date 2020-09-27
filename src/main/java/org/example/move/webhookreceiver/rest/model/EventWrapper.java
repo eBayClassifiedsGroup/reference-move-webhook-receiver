@@ -1,4 +1,4 @@
-package org.example.move.webhookreceiver.enrichedlisting.model;
+package org.example.move.webhookreceiver.rest.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;

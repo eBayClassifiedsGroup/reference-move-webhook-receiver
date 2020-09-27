@@ -1,11 +1,12 @@
-package org.example.move.webhookreceiver.enrichedlisting.model;
+package org.example.move.webhookreceiver.rest.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum WebhookEventType {
 
-    ENRICHED_LISTING("enriched-listings");
+    ENRICHED_LISTING("enriched-listings"),
+    LISTING("listings");
 
     private String value;
 
