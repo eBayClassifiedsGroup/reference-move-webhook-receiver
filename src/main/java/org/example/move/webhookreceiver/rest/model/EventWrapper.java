@@ -1,4 +1,10 @@
-package org.example.move.webhookreceiver.enrichedlisting.model;
+//------------------------------------------------------------------
+// Copyright 2020 mobile.de GmbH.
+// Author/Developer: Philipp Bartsch
+//
+// This code is licensed under MIT license (see LICENSE for details)
+//------------------------------------------------------------------
+package org.example.move.webhookreceiver.rest.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;

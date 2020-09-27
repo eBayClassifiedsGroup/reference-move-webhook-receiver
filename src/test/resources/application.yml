@@ -24,3 +24,6 @@ management:
     export:
       prometheus:
         enabled: true
+
+signaturecheck:
+  password: "this-is-a-secret-shared-with-move"

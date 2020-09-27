@@ -1,0 +1,375 @@
+{
+  "eventType": "enriched-listings",
+  "timestamp": "2020-04-30T00:42:47Z",
+  "payload": {
+    "listing": {
+      "newState": {
+        "id": "14356319",
+        "creationDate": "2020-04-20T03:17:26Z",
+        "modificationDate": "2020-04-30T00:42:46Z",
+        "foreignId": "e8f98443-e6c4-497c-b0a4-f19fb745f986",
+        "version": 5,
+        "partnerName": "example-partner",
+        "syndicationAllowed": false,
+        "adStatus": {
+          "visibleToConsumer": false,
+          "statusId": "deleted",
+          "subStatusId": "ended",
+          "statusModificationDate": "2020-04-30T00:42:46Z",
+          "tnsId": "noop-tmx-id"
+        },
+        "stockNumber": "400",
+        "vehicleClass": "Car",
+        "category": "Hatchback",
+        "make": "TOYOTA",
+        "model": "Yaris",
+        "title": "2011 TOYOTA Yaris YR 1.3L Auto",
+        "condition": "USED",
+        "seller": {
+          "type": "DEALER",
+          "foreignId": "12345"
+        },
+        "mileage": 104861,
+        "vin": "JTDKW923305189247",
+        "vinDecoding": true,
+        "cubicCapacity": 1299,
+        "power": 63,
+        "gearbox": "AUTOMATIC_GEAR",
+        "numberOfSpeeds": 4,
+        "fuel": "PETROL",
+        "driveTrain": "FWD",
+        "co2": "147.0",
+        "consumptionInner": "6.3",
+        "consumptionUnit": "LITER",
+        "exteriorColor": "OTHER",
+        "doors": "FOUR_OR_FIVE",
+        "seats": 5,
+        "interiorColor": "GREY",
+        "constructionYear": 2011,
+        "airbag": "FRONT_AND_SIDE_AND_MORE_AIRBAGS",
+        "climateControl": "MANUAL_CLIMATE_CONTROL",
+        "parkingAssistants": [],
+        "htmlDescription": "Pretty good car!",
+        "epsImages": [
+          {
+            "baseUrl": "https://i.ebayimg.com/00/s/1234567890ABC/z/0987654321DEF/$"
+          }
+        ],
+        "prices": {
+          "consumerPrice": {
+            "currency": "AUD",
+            "isNet": true,
+            "amount": "6990",
+            "negotiable": false
+          }
+        },
+        "priceRating": {
+          "rating": "GOOD",
+          "accuracy": 100,
+          "averagePrice": {
+            "amount": 7480,
+            "currency": "AUD"
+          },
+          "provider": "AU_GLASSS",
+          "additionalProperties": {
+            "lowerThresholdsInclusively": {
+              "OFF_RANGE_HIGH": 1.190909,
+              "POOR": 1.090909,
+              "FAIR": 1.0,
+              "GOOD": 0.9090909,
+              "GREAT": 0.8090909,
+              "OFF_RANGE_LOW": 0.0
+            }
+          },
+          "evaluationFactors": {
+            "factoredIn": [
+              "YEAR_MAKE_MODEL",
+              "TRIM",
+              "MILEAGE"
+            ],
+            "factoredOut": [
+              "CAR_HISTORY",
+              "VISUAL_CONDITION",
+              "PROVINCE"
+            ]
+          }
+        },
+        "radio": [],
+        "trimLine": "YR",
+        "cylinders": 4,
+        "location": {
+          "zip": "5086",
+          "city": "Hampstead Gardens",
+          "country": "AU",
+          "latitude": -34.873867,
+          "longitude": 138.6330965
+        },
+        "contact": {
+          "companyName": "Dealership example",
+          "email": "contact@dealership.com.au",
+          "languages": [
+            "en"
+          ]
+        },
+        "modelRange": "NCP130R, 5D HATCHBACK, MULTI POINT F/INJ, 4 SP AUTOMATIC, 1299 CC, 1.3L, 4 cyl",
+        "vehicleCatalog": {
+          "nvic": "N0A11K"
+        },
+        "gumtreeAuMakeModelVariant": {
+          "make": "TOYOTA",
+          "model": "YARIS",
+          "otherVariants": [
+            "YRS",
+            "EDGE",
+            "ZR",
+            "ASCENT",
+            "YR",
+            "RUSH",
+            "YRX",
+            "SX"
+          ]
+        }
+      },
+      "oldState": {
+        "id": "14356319",
+        "creationDate": "2020-04-20T03:17:26Z",
+        "modificationDate": "2020-04-23T00:43:53Z",
+        "foreignId": "e8f98443-e6c4-497c-b0a4-f19fb745f986",
+        "version": 4,
+        "partnerName": "example-partner",
+        "syndicationAllowed": false,
+        "adStatus": {
+          "visibleToConsumer": false,
+          "statusId": "paused",
+          "subStatusId": "reserved",
+          "statusModificationDate": "2020-04-23T00:43:53Z",
+          "tnsId": "noop-tmx-id"
+        },
+        "stockNumber": "400",
+        "vehicleClass": "Car",
+        "category": "Hatchback",
+        "make": "TOYOTA",
+        "model": "Yaris",
+        "title": "2011 TOYOTA Yaris YR 1.3L Auto",
+        "condition": "USED",
+        "seller": {
+          "type": "DEALER",
+          "foreignId": "12345"
+        },
+        "mileage": 104861,
+        "vin": "JTDKW923305189247",
+        "vinDecoding": true,
+        "cubicCapacity": 1299,
+        "power": 63,
+        "gearbox": "AUTOMATIC_GEAR",
+        "numberOfSpeeds": 4,
+        "fuel": "PETROL",
+        "driveTrain": "FWD",
+        "co2": "147.0",
+        "consumptionInner": "6.3",
+        "consumptionUnit": "LITER",
+        "exteriorColor": "OTHER",
+        "doors": "FOUR_OR_FIVE",
+        "seats": 5,
+        "interiorColor": "GREY",
+        "constructionYear": 2011,
+        "airbag": "FRONT_AND_SIDE_AND_MORE_AIRBAGS",
+        "climateControl": "MANUAL_CLIMATE_CONTROL",
+        "parkingAssistants": [],
+        "htmlDescription": "Pretty good car!",
+        "epsImages": [
+          {
+            "baseUrl": "https://i.ebayimg.com/00/s/1234567890ABC/z/0987654321DEF/$"
+          }
+        ],
+        "prices": {
+          "consumerPrice": {
+            "currency": "AUD",
+            "isNet": true,
+            "amount": "6990",
+            "negotiable": false
+          }
+        },
+        "priceRating": {
+          "rating": "GOOD",
+          "accuracy": 100,
+          "averagePrice": {
+            "amount": 7480,
+            "currency": "AUD"
+          },
+          "provider": "AU_GLASSS",
+          "additionalProperties": {
+            "lowerThresholdsInclusively": {
+              "OFF_RANGE_HIGH": 1.190909,
+              "POOR": 1.090909,
+              "FAIR": 1.0,
+              "GOOD": 0.9090909,
+              "GREAT": 0.8090909,
+              "OFF_RANGE_LOW": 0.0
+            }
+          },
+          "evaluationFactors": {
+            "factoredIn": [
+              "YEAR_MAKE_MODEL",
+              "TRIM",
+              "MILEAGE"
+            ],
+            "factoredOut": [
+              "CAR_HISTORY",
+              "VISUAL_CONDITION",
+              "PROVINCE"
+            ]
+          }
+        },
+        "radio": [],
+        "trimLine": "YR",
+        "cylinders": 4,
+        "location": {
+          "zip": "5086",
+          "city": "Hampstead Gardens",
+          "country": "AU",
+          "latitude": -34.874885,
+          "longitude": 138.628385
+        },
+        "contact": {
+          "companyName": "Dealership example",
+          "email": "contact@dealership.com.au",
+          "languages": [
+            "en"
+          ]
+        },
+        "modelRange": "NCP130R, 5D HATCHBACK, MULTI POINT F/INJ, 4 SP AUTOMATIC, 1299 CC, 1.3L, 4 cyl",
+        "vehicleCatalog": {
+          "nvic": "N0A11K"
+        },
+        "gumtreeAuMakeModelVariant": {
+          "make": "TOYOTA",
+          "model": "YARIS",
+          "otherVariants": [
+            "YRS",
+            "EDGE",
+            "ZR",
+            "ASCENT",
+            "YR",
+            "RUSH",
+            "YRX",
+            "SX"
+          ]
+        }
+      }
+    },
+    "dealer": {
+      "id": "move-au.12345",
+      "name": "Some name",
+      "foreignId": "12345",
+      "tenantId": "move-au",
+      "partnerName": "move-dealer-tool-au",
+      "chatId": "123123123123",
+      "description": "Welcome to Dealership.",
+      "openingHours": [
+        "Mo-Fr 09:00-17:00",
+        "Sa 09:00-16:00",
+        "Su closed"
+      ],
+      "additionalOperatingHours": "",
+      "locations": [
+        {
+          "street": "100 Main Road",
+          "zipCode": "5086",
+          "city": "Hampstead Gardens",
+          "province": "SA",
+          "country": "AU",
+          "geoCoord": {
+            "latitude": -34.874885,
+            "longitude": 138.628385
+          }
+        }
+      ],
+      "logoUrl": "https://i.ebayimg.com/00/s/ABC123=/z/DEF456/$_26.JPG",
+      "contacts": [
+        {
+          "type": "USED_VEHICLES",
+          "email": "person@dealer.com.au",
+          "phoneNumbers": [
+            "0402229999"
+          ],
+          "url": "www.dealer.com.au"
+        }
+      ],
+      "subscriptions": [
+        {
+          "name": "Business Elite Package - Tier 2 - Used Car",
+          "type": "USED_VEHICLES",
+          "bundle": "BUSINESS_ELITE",
+          "quantity": 1,
+          "lengthMonths": 24,
+          "tierLimit": 70,
+          "bumpUps": 0,
+          "topAds": 0,
+          "autoRefreshInterval": 7,
+          "addOns": [
+            "CALL_TRACKING",
+            "FINANCE_DRIVER",
+            "HIDE_RELATED_LISTINGS_ON_VIP",
+            "DEALER_PAGE_ENHANCED",
+            "AUTO_REFRESH",
+            "MANAGED_FEATURES",
+            "DEALER_LOGO_ON_VIP",
+            "PHOTO_SHOWCASE",
+            "MOBILE_CAROUSEL",
+            "TRADESII"
+          ],
+          "startDate": "2020-02-26T00:00:00Z",
+          "endDate": "2022-02-25T00:00:00Z"
+        },
+        {
+          "name": "Feature Package - Bronze - 10 Top Ads",
+          "type": "USED_VEHICLES",
+          "quantity": 4,
+          "lengthMonths": 24,
+          "bumpUps": 0,
+          "topAds": 10,
+          "addOns": [],
+          "startDate": "2020-03-01T00:00:00Z",
+          "endDate": "2022-02-28T00:00:00Z"
+        },
+        {
+          "name": "Autos Feature Compensation - 5 Top Ads",
+          "type": "USED_VEHICLES",
+          "quantity": 2,
+          "lengthMonths": 1,
+          "bumpUps": 0,
+          "topAds": 5,
+          "addOns": [],
+          "startDate": "2020-04-01T00:00:00Z",
+          "endDate": "2020-04-30T00:00:00Z"
+        }
+      ],
+      "addOns": [
+        "DEALER_PAGE_ENHANCED",
+        "DEALER_LOGO_ON_VIP",
+        "AUTO_REFRESH",
+        "HIDE_RELATED_LISTINGS_ON_VIP",
+        "CALL_TRACKING",
+        "MANAGED_FEATURES",
+        "FINANCE_DRIVER",
+        "MOBILE_CAROUSEL",
+        "PHOTO_SHOWCASE",
+        "TRADESII"
+      ],
+      "createdDate": "2019-11-28T12:08:59Z",
+      "active": true
+    },
+    "promotions": [
+      {
+      "id": "1",
+      "promotion": "inline-listing",
+      "active": false
+      },
+      {
+        "id": "2",
+        "promotion": "top-ad",
+        "active": false
+      }]
+  }
+}
