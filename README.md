@@ -1,4 +1,4 @@
-[Github](https://github.com/tastybug/reference-move-webhook-receiver/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [Github Home](https://github.com/tastybug/reference-move-webhook-receiver/)
 
 # Reference MoVe Webhook Receiver Implementation
 
