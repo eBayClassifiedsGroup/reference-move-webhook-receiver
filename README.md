@@ -12,6 +12,8 @@ This repository contains a reference Webhook receiver implementation in Java / S
 
 This project utilizes gradle, you can build it using `./gradlew clean build`. The build process will generate a number of helpful payload types for incoming data, e.g. `Listing.java` which comes with extensive descriptions of listing properties.
 
+In your IDE make sure to enable annotation processing; you possibly need a Lombok plugin.
+
 ### How to experiment with this
 
 The service is stateless and can be started locally by running `./gradlew clean bootRun`, after which you can open <http://localhost:8080/swagger-ui.html>.

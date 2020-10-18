@@ -39,7 +39,6 @@ public class ReceiverController {
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Webhook receiver for event type LISTING.")
-    @Deprecated(forRemoval = true)
     public ResponseEntity processListingEvent(@RequestBody @ApiParam("The event") EventWrapper<ListingEvent> event) {
         if (!WebhookEventType.LISTING.equals(event.getEventType())) {
             log.error("Unexpected event type received: {}", event.getEventType());
