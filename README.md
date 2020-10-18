@@ -19,3 +19,7 @@ In your IDE make sure to enable annotation processing; you possibly need a Lombo
 The service is stateless and can be started locally by running `./gradlew clean bootRun`, after which you can open <http://localhost:8080/swagger-ui.html>.
 
 This will open Swagger UI, which is a bare bone REST client that you can use to publish events into the service and see how it reacts.
+
+At the bottom of the page your can browse through the MoVe API model, complete with examples, validation rules and description of semantics. Make sure to check those out to map incoming data to your internal model.
+
+![Swagger UI as a source to inspect MoVe's domain model](./use-swagger-to-inspect-domain-model.png)
