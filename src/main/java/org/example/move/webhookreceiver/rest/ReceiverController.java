@@ -11,7 +11,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.move.webhookreceiver.rest.hmac.HmacChecker;
 import org.example.move.webhookreceiver.rest.model.EventWrapper;
 import org.example.move.webhookreceiver.rest.model.WebhookEventType;
 import org.example.move.webhookreceiver.rest.model.EnrichedListingEvent;
@@ -40,11 +39,9 @@ public class ReceiverController {
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Webhook receiver for event type LISTING.")
-    @Deprecated(forRemoval = true)
     public ResponseEntity processListingEvent(
         @RequestHeader("signature") @ApiParam("Payload signature") String signature,
         @RequestBody @ApiParam("The event") EventWrapper<ListingEvent> event) {
-
         if (!WebhookEventType.LISTING.equals(event.getEventType())) {
             log.error("Unexpected event type received: {}", event.getEventType());
             return ResponseEntity.badRequest().build();
