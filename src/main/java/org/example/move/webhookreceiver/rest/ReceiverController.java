@@ -9,9 +9,9 @@ package org.example.move.webhookreceiver.rest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.move.webhookreceiver.rest.hmac.HmacChecker;
 import org.example.move.webhookreceiver.rest.model.EventWrapper;
 import org.example.move.webhookreceiver.rest.model.WebhookEventType;
 import org.example.move.webhookreceiver.rest.model.EnrichedListingEvent;
@@ -21,6 +21,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,7 +41,10 @@ public class ReceiverController {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Webhook receiver for event type LISTING.")
     @Deprecated(forRemoval = true)
-    public ResponseEntity processListingEvent(@RequestBody @ApiParam("The event") EventWrapper<ListingEvent> event) {
+    public ResponseEntity processListingEvent(
+        @RequestHeader("signature") @ApiParam("Payload signature") String signature,
+        @RequestBody @ApiParam("The event") EventWrapper<ListingEvent> event) {
+
         if (!WebhookEventType.LISTING.equals(event.getEventType())) {
             log.error("Unexpected event type received: {}", event.getEventType());
             return ResponseEntity.badRequest().build();
@@ -50,7 +54,6 @@ public class ReceiverController {
             log.error("No payload received for: {}", event.getEventType());
             return ResponseEntity.badRequest().build();
         }
-
 
         log.info("Received event type '{}', payload: '{}'.", event.getEventType(), event.getPayload());
 
@@ -65,7 +68,10 @@ public class ReceiverController {
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Webhook receiver for event type ENRICHED-LISTING.")
-    public ResponseEntity processEnrichedListingEvent(@RequestBody @ApiParam("The event") EventWrapper<EnrichedListingEvent> event) {
+    public ResponseEntity processEnrichedListingEvent(
+        @RequestHeader("signature") @ApiParam("Payload signature") String signature,
+        @RequestBody @ApiParam("The event") EventWrapper<EnrichedListingEvent> event
+    ) {
 
         if (!WebhookEventType.ENRICHED_LISTING.equals(event.getEventType())) {
             log.error("Unexpected event type received: {}", event.getEventType());
@@ -90,7 +96,9 @@ public class ReceiverController {
     private String processListing(ListingBeforeAfter listingPayload) {
 
         // the receiver is expected to assign an id to the listing and return it for tracking purposes to MoVe
-        String localListingId = UUID.randomUUID().toString();
+        // for testability reasons we just use the move id here and add a suffix
+        String localListingId = listingPayload.getLatest().getId() + "-received";
+
         // this points to the VIP URL under which the listing will be, eventually, visible
         String localListingVehicleInformationPageUrl = "http://www.marketplace.com/id=" + localListingId;
 
