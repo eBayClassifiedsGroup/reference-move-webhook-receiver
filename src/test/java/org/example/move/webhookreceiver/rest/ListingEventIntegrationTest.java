@@ -39,7 +39,7 @@ import org.springframework.util.CollectionUtils;
 
 @SuppressWarnings("ConstantConditions")
 @Slf4j
-class ReceiverControllerIntegrationTest extends IntegrationTestBase {
+class ListingEventIntegrationTest extends IntegrationTestBase {
 
     @Autowired
     HmacChecker signatureChecker;

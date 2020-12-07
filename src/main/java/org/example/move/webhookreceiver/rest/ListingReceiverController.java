@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/")
 @Api(tags = {"Webhook Receiver"})
 @Slf4j
-public class ReceiverController {
+public class ListingReceiverController {
 
     private static final String LINK_HEADER_NAME = "Link";
 
@@ -91,29 +91,6 @@ public class ReceiverController {
         return ResponseEntity.ok().header(LINK_HEADER_NAME, linkHeader).build();
     }
 
-    @PostMapping(value = "/webhook/dealer",
-        consumes = MediaType.APPLICATION_JSON_VALUE,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @ApiOperation(value = "Webhook receiver for event type DEALER.")
-    public ResponseEntity<Void> processDealersEvent(
-        @RequestHeader("signature") @ApiParam("Payload signature") String signature,
-        @RequestBody @ApiParam("The event") EventWrapper<DealersEvent> event) {
-        if (!WebhookEventType.DEALERS.equals(event.getEventType())) {
-            log.error("Unexpected event type received: {}", event.getEventType());
-            return ResponseEntity.badRequest().build();
-        }
-
-        if (event.getPayload() == null) {
-            log.error("No payload received for: {}", event.getEventType());
-            return ResponseEntity.badRequest().build();
-        }
-
-        log.info("Received event type '{}', payload: '{}'.", event.getEventType(), event.getPayload());
-        processDealerUpdate(event.getPayload().getDealer());
-
-        return ResponseEntity.ok().build();
-    }
-
     // this is a dummy method that returns static content
     private String processListing(ListingBeforeAfter listingPayload) {
 
@@ -125,13 +102,5 @@ public class ReceiverController {
         String localListingVehicleInformationPageUrl = "http://www.marketplace.com/id=" + localListingId;
 
         return linkHeaderCreator.createHeader(localListingId, localListingVehicleInformationPageUrl);
-    }
-
-
-    // this is a dummy method that ingests a dealer entity update
-    private void processDealerUpdate(DealerLogMessageV2 dealerUpdate) {
-        /*
-            your code here
-         */
     }
 }

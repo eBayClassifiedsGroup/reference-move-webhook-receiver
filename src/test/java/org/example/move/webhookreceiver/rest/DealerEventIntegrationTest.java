@@ -7,7 +7,7 @@
 package org.example.move.webhookreceiver.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.example.move.webhookreceiver.rest.ReceiverControllerIntegrationTest.readResourceFile;
+import static org.example.move.webhookreceiver.rest.ListingEventIntegrationTest.readResourceFile;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.HttpStatus.OK;
 
