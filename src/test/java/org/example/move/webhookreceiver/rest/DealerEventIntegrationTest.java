@@ -14,6 +14,7 @@ import static org.springframework.http.HttpStatus.OK;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ecg.move.sellermodel.dealer.DealerLogMessageV2;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Date;
@@ -23,17 +24,15 @@ import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 import org.example.move.IntegrationTestBase;
 import org.example.move.webhookreceiver.rest.hmac.HmacChecker;
-import org.example.move.webhookreceiver.rest.model.DealersEvent;
 import org.example.move.webhookreceiver.rest.model.EventWrapper;
 import org.example.move.webhookreceiver.rest.model.WebhookEventType;
-import org.example.move.webhookreceiver.rest.model.WebhookPayload;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.CollectionUtils;
 
-@SuppressWarnings( {"ConstantConditions", "OptionalUsedAsFieldOrParameterType"})
+@SuppressWarnings( {"OptionalUsedAsFieldOrParameterType"})
 @Slf4j
 class DealerEventIntegrationTest extends IntegrationTestBase {
 
@@ -44,9 +43,9 @@ class DealerEventIntegrationTest extends IntegrationTestBase {
     ObjectMapper objectMapper;
 
     @Test
-    void enriched_listing_can_be_posted() throws JsonProcessingException {
+    void dealer_update_can_be_posted() throws JsonProcessingException {
         // given
-        DealersEvent dealersEvent = aDealerEvent().getPayload();
+        DealerLogMessageV2 dealersEvent = aDealerEvent().getPayload();
 
         //when
         ResponseEntity<?> response = postDealerUpdate(dealersEvent, Optional.empty());
@@ -55,10 +54,10 @@ class DealerEventIntegrationTest extends IntegrationTestBase {
         assertThat(response.getStatusCode()).isEqualTo(OK);
     }
 
-    private ResponseEntity<Void> postDealerUpdate(DealersEvent event, Optional<String> givenHmac)
+    private ResponseEntity<Void> postDealerUpdate(DealerLogMessageV2 event, Optional<String> givenHmac)
         throws JsonProcessingException {
 
-        EventWrapper<WebhookPayload> payload = EventWrapper.builder()
+        EventWrapper payload = EventWrapper.builder()
             .payload(event)
             .eventType(WebhookEventType.DEALERS)
             .timestamp(new Date())
@@ -78,10 +77,10 @@ class DealerEventIntegrationTest extends IntegrationTestBase {
             Void.class);
     }
 
-    private EventWrapper<DealersEvent> aDealerEvent() {
+    private EventWrapper<DealerLogMessageV2> aDealerEvent() {
 
         try {
-            TypeReference<EventWrapper<DealersEvent>> eventWrapperTypeReference = new TypeReference<>() {
+            TypeReference<EventWrapper<DealerLogMessageV2>> eventWrapperTypeReference = new TypeReference<>() {
             };
             return objectMapper
                 .readValue(readResourceFile("webhook/real-dealers-event.json"), eventWrapperTypeReference);

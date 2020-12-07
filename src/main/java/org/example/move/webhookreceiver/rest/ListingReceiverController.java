@@ -6,18 +6,16 @@
 //------------------------------------------------------------------
 package org.example.move.webhookreceiver.rest;
 
-import ecg.move.sellermodel.dealer.DealerLogMessageV2;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.move.webhookreceiver.rest.model.DealersEvent;
-import org.example.move.webhookreceiver.rest.model.EventWrapper;
-import org.example.move.webhookreceiver.rest.model.WebhookEventType;
-import org.example.move.webhookreceiver.rest.model.EnrichedListingEvent;
-import org.example.move.webhookreceiver.rest.model.ListingEvent;
 import org.example.move.webhookreceiver.movemodel.listing.ListingBeforeAfter;
+import org.example.move.webhookreceiver.rest.model.EnrichedListingEvent;
+import org.example.move.webhookreceiver.rest.model.EventWrapper;
+import org.example.move.webhookreceiver.rest.model.ListingEvent;
+import org.example.move.webhookreceiver.rest.model.WebhookEventType;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

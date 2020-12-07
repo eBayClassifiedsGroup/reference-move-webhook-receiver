@@ -12,7 +12,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.move.webhookreceiver.rest.model.DealersEvent;
 import org.example.move.webhookreceiver.rest.model.EventWrapper;
 import org.example.move.webhookreceiver.rest.model.WebhookEventType;
 import org.springframework.http.MediaType;
@@ -36,7 +35,7 @@ public class DealerReceiverController {
     @ApiOperation(value = "Webhook receiver for event type DEALER.")
     public ResponseEntity<Void> processDealersEvent(
         @RequestHeader("signature") @ApiParam("Payload signature") String signature,
-        @RequestBody @ApiParam("The event") EventWrapper<DealersEvent> event) {
+        @RequestBody @ApiParam("The event") EventWrapper<DealerLogMessageV2> event) {
         if (!WebhookEventType.DEALERS.equals(event.getEventType())) {
             log.error("Unexpected event type received: {}", event.getEventType());
             return ResponseEntity.badRequest().build();
@@ -48,7 +47,7 @@ public class DealerReceiverController {
         }
 
         log.info("Received event type '{}', payload: '{}'.", event.getEventType(), event.getPayload());
-        processDealerUpdate(event.getPayload().getDealer());
+        processDealerUpdate(event.getPayload());
 
         return ResponseEntity.ok().build();
     }
