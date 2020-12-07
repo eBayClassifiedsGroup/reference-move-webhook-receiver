@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class EventWrapper<T extends WebhookPayload> {
+public class EventWrapper<T> {
 
     private WebhookEventType eventType;
 

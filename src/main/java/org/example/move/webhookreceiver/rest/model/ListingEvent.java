@@ -28,17 +28,12 @@ public class ListingEvent implements WebhookPayload {
     private ListingBeforeAfter beforeAfter;
 
     @JsonIgnore
-    public String getPartnerId() {
-        return Optional.ofNullable(getMostRecentListing()).map(Listing::getPartnerName).orElse(null);
-    }
-
-    @JsonIgnore
     public String getForeignId() {
         return Optional.ofNullable(getMostRecentListing()).map(Listing::getForeignId).orElse(null);
     }
 
     @JsonIgnore
-    public String getListingId() {
+    public String getEntityId() {
         return Optional.ofNullable(getMostRecentListing()).map(Listing::getId).orElse(null);
     }
 

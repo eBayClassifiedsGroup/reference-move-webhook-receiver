@@ -11,11 +11,11 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.move.webhookreceiver.rest.model.EventWrapper;
-import org.example.move.webhookreceiver.rest.model.WebhookEventType;
-import org.example.move.webhookreceiver.rest.model.EnrichedListingEvent;
-import org.example.move.webhookreceiver.rest.model.ListingEvent;
 import org.example.move.webhookreceiver.movemodel.listing.ListingBeforeAfter;
+import org.example.move.webhookreceiver.rest.model.EnrichedListingEvent;
+import org.example.move.webhookreceiver.rest.model.EventWrapper;
+import org.example.move.webhookreceiver.rest.model.ListingEvent;
+import org.example.move.webhookreceiver.rest.model.WebhookEventType;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/")
 @Api(tags = {"Webhook Receiver"})
 @Slf4j
-public class ReceiverController {
+public class ListingReceiverController {
 
     private static final String LINK_HEADER_NAME = "Link";
 
@@ -39,10 +39,10 @@ public class ReceiverController {
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Webhook receiver for event type LISTING.")
-    public ResponseEntity processListingEvent(
+    public ResponseEntity<Void> processListingEvent(
         @RequestHeader("signature") @ApiParam("Payload signature") String signature,
         @RequestBody @ApiParam("The event") EventWrapper<ListingEvent> event) {
-        if (!WebhookEventType.LISTING.equals(event.getEventType())) {
+        if (!WebhookEventType.LISTINGS.equals(event.getEventType())) {
             log.error("Unexpected event type received: {}", event.getEventType());
             return ResponseEntity.badRequest().build();
         }
@@ -65,7 +65,7 @@ public class ReceiverController {
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Webhook receiver for event type ENRICHED-LISTING.")
-    public ResponseEntity processEnrichedListingEvent(
+    public ResponseEntity<Void> processEnrichedListingEvent(
         @RequestHeader("signature") @ApiParam("Payload signature") String signature,
         @RequestBody @ApiParam("The event") EventWrapper<EnrichedListingEvent> event
     ) {

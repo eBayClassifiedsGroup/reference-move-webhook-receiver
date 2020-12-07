@@ -1,0 +1,183 @@
+{
+  "eventType": "dealers",
+  "timestamp": "2020-12-07T09:13:38Z",
+  "payload": {
+    "id": "move-au.12345",
+    "version": 1505,
+    "name": "Dealership Name",
+    "foreignId": "12345",
+    "tenantId": "move-au",
+    "partnerName": "move-dealer-tool-au",
+    "chatId": "123123123123",
+    "locations": [
+      {
+        "street": "100 Main Road",
+        "zipCode": "5086",
+        "city": "Hampstead Gardens",
+        "province": "SA",
+        "country": "AU",
+        "geoCoord": {
+          "latitude": -34.874885,
+          "longitude": 138.628385
+        },
+        "postingGeoCoord": {
+          "latitude": -34.874885,
+          "longitude": 138.628385
+        }
+      }
+    ],
+    "logoUrl": "https://i.ebayimg.com/00/s/ABC123=/z/DEF456/$_26.JPG",
+    "contacts": [
+      {
+        "type": "NEW_VEHICLES",
+        "email": "C4184",
+        "phoneNumbers": [
+          "0402229999"
+        ],
+        "url": "https://www.dealership-example.com.au/new-cars"
+      },
+      {
+        "type": "USED_VEHICLES",
+        "phoneNumbers": [
+          "0402229999"
+        ],
+        "url": "https://www.dealership-example.com.au/used-cars"
+      }
+    ],
+    "subscriptions": [
+      {
+        "opportunityId": "asdasdasd",
+        "name": "New Car - ALC Placeholder",
+        "description": "fghfghfjfgjhfg",
+        "quantity": 1,
+        "lengthMonths": 57,
+        "tierLimit": 0,
+        "bumpUps": 0,
+        "topAds": 0,
+        "horizontalAddOns": [],
+        "startDate": "2017-08-01T00:00:00Z",
+        "endDate": "2022-04-30T00:00:00Z"
+      },
+      {
+        "opportunityId": "0061W00001GLfZlQAL",
+        "name": "Business Package - Group 3 - FCA New Car",
+        "type": "NEW_VEHICLES",
+        "bundle": "BUSINESS",
+        "lengthMonths": 36,
+        "tierLimit": 20000,
+        "bumpUps": 0,
+        "topAds": 0,
+        "addOns": [
+          "CALL_TRACKING",
+          "FINANCE_DRIVER",
+          "DEALER_PAGE_BASIC"
+        ],
+        "horizontalAddOns": [
+          "CREDIT_APPLICATION"
+        ],
+        "startDate": "2019-11-01T00:00:00Z",
+        "endDate": "2022-10-31T00:00:00Z"
+      }
+    ],
+    "addOns": [
+      "DEALER_PAGE_BASIC",
+      "CALL_TRACKING",
+      "FINANCE_DRIVER"
+    ],
+    "activeAddOns": [
+      {
+        "type": "NEW_VEHICLES",
+        "values": [
+          "DEALER_PAGE_BASIC",
+          "CALL_TRACKING",
+          "FINANCE_DRIVER"
+        ]
+      },
+      {
+        "type": "USED_VEHICLES",
+        "values": []
+      }
+    ],
+    "horizontalActiveAddOns": [
+      {
+        "type": "NEW_VEHICLES",
+        "values": [
+          "CREDIT_APPLICATION"
+        ]
+      },
+      {
+        "type": "USED_VEHICLES",
+        "values": []
+      }
+    ],
+    "activeSubscriptions": [
+      {
+        "opportunityId": "2344564675685",
+        "name": "Business Package - Group 3 - FCA New Car",
+        "type": "NEW_VEHICLES",
+        "bundle": "BUSINESS",
+        "lengthMonths": 36,
+        "tierLimit": 20000,
+        "bumpUps": 0,
+        "topAds": 0,
+        "addOns": [
+          "CALL_TRACKING",
+          "FINANCE_DRIVER",
+          "DEALER_PAGE_BASIC"
+        ],
+        "horizontalAddOns": [
+          "CREDIT_APPLICATION"
+        ],
+        "startDate": "2019-11-01T00:00:00Z",
+        "endDate": "2022-10-31T00:00:00Z"
+      },
+      {
+        "opportunityId": "87652334456787986756434",
+        "name": "New Car - ALC Placeholder",
+        "description": "asdfghjhgfdsadsfghj",
+        "quantity": 1,
+        "lengthMonths": 57,
+        "tierLimit": 0,
+        "bumpUps": 0,
+        "topAds": 0,
+        "horizontalAddOns": [],
+        "startDate": "2017-08-01T00:00:00Z",
+        "endDate": "2022-04-30T00:00:00Z"
+      }
+    ],
+    "additionalFields": {
+      "salesforceId": "dasadsadsasadassadsasadsaddsasadda",
+      "trackingNumberNew": "0402229999111",
+      "ringToUsed": "0402229999222",
+      "ringToNew": "0402229999333",
+      "emailLeadNew": "C4184",
+      "emailLeadFormatUsed": "PlainHtml",
+      "emailLeadFormatNew": "Shift",
+      "financeContactFirstName": "John",
+      "financeContactLastName": "New Car manager*",
+      "financeContactPhone": "+1234-567-890",
+      "postingCityName": "City",
+      "postingCityLocationId": "1700124",
+      "postingCityLat": "-34.874885",
+      "postingCityLong": "138.628385",
+      "autoIndustry": "Passenger Vehicles",
+      "newOem": "FCA",
+      "newOemId": "FCA_C4184",
+      "newCarMake": [
+        "Chrysler"
+      ],
+      "language": "French",
+      "chromeImageBackup": true,
+      "automaticVinDecodeUsed": true,
+      "automaticVinDecodeNew": true,
+      "holdDelivery": false,
+      "hasPhotoAi": false,
+      "financeDriverOptOut": false,
+      "status": "Active",
+      "relatedAccountIds": []
+    },
+    "createdDate": "2011-04-11T12:54:02Z",
+    "migrated": true,
+    "active": true
+  }
+}

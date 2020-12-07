@@ -30,16 +30,15 @@ import org.example.move.webhookreceiver.rest.hmac.HmacChecker;
 import org.example.move.webhookreceiver.rest.model.EnrichedListingEvent;
 import org.example.move.webhookreceiver.rest.model.EventWrapper;
 import org.example.move.webhookreceiver.rest.model.WebhookEventType;
-import org.example.move.webhookreceiver.rest.model.WebhookPayload;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.CollectionUtils;
 
-@SuppressWarnings("ConstantConditions")
+@SuppressWarnings( {"ConstantConditions", "OptionalUsedAsFieldOrParameterType"})
 @Slf4j
-class ReceiverControllerIntegrationTest extends IntegrationTestBase {
+class ListingEventIntegrationTest extends IntegrationTestBase {
 
     @Autowired
     HmacChecker signatureChecker;
@@ -51,7 +50,7 @@ class ReceiverControllerIntegrationTest extends IntegrationTestBase {
     void enriched_listing_can_be_posted() throws JsonProcessingException {
         // given
         EnrichedListingEvent enrichedListingEvent = enrichedListingEvent().getPayload();
-        String listingId = enrichedListingEvent.getListingId();
+        String listingId = enrichedListingEvent.getEntityId();
 
         //when
         ResponseEntity<?> response = postEnrichedListingCreate(enrichedListingEvent);
@@ -110,7 +109,7 @@ class ReceiverControllerIntegrationTest extends IntegrationTestBase {
     private ResponseEntity<Void> enrichedListingCall(EnrichedListingEvent event, Optional<String> givenHmac)
         throws JsonProcessingException {
 
-        EventWrapper<WebhookPayload> payload = EventWrapper.builder()
+        EventWrapper payload = EventWrapper.builder()
             .payload(event)
             .eventType(WebhookEventType.ENRICHED_LISTING)
             .timestamp(new Date())
@@ -142,7 +141,7 @@ class ReceiverControllerIntegrationTest extends IntegrationTestBase {
         }
     }
 
-    private String readResourceFile(String resource) throws URISyntaxException, IOException {
+    static String readResourceFile(String resource) throws URISyntaxException, IOException {
         final Path resourcePath = Paths.get(ClassLoader.getSystemResource(resource).toURI());
         return new String(Files.readAllBytes(resourcePath));
     }
