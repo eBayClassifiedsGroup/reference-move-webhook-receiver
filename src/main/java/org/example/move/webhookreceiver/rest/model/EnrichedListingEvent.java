@@ -10,8 +10,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import ecg.move.sellermodel.dealer.DealerLogMessageV2;
 import ecg.move.sellermodel.listing.Listing;
-import org.example.move.webhookreceiver.movemodel.dealer.DealerLogMessageV2;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,11 +36,6 @@ public class EnrichedListingEvent implements WebhookPayload {
 
     @JsonProperty("promotions")
     private Promotion[] promotions;
-
-    @JsonIgnore
-    public String getPartnerId() {
-        return Optional.ofNullable(getMostRecentListing()).map(Listing::getPartnerName).orElse(null);
-    }
 
     @JsonIgnore
     public String getForeignId() {
