@@ -2,53 +2,53 @@
   "eventType": "dealers",
   "timestamp": "2020-12-07T09:13:38Z",
   "payload": {
-    "id": "move-ca.14031",
+    "id": "move-au.12345",
     "version": 1505,
-    "name": "Automobiles A Gosselin Incorporated",
-    "foreignId": "14031",
-    "tenantId": "move-ca",
-    "partnerName": "kijijikitcanada",
-    "chatId": "14031",
+    "name": "Dealership Name",
+    "foreignId": "12345",
+    "tenantId": "move-au",
+    "partnerName": "move-dealer-tool-au",
+    "chatId": "123123123123",
     "locations": [
       {
-        "street": "1279 route Marie-Victorin",
-        "zipCode": "G7A 4G3",
-        "city": "Saint-Nicolas",
-        "province": "QC",
-        "country": "CA",
+        "street": "100 Main Road",
+        "zipCode": "5086",
+        "city": "Hampstead Gardens",
+        "province": "SA",
+        "country": "AU",
         "geoCoord": {
-          "latitude": 46.7027454,
-          "longitude": -71.3872277
+          "latitude": -34.874885,
+          "longitude": 138.628385
         },
         "postingGeoCoord": {
-          "latitude": 46.81274,
-          "longitude": -71.21935
+          "latitude": -34.874885,
+          "longitude": 138.628385
         }
       }
     ],
-    "logoUrl": "https://i.ebayimg.com/00/s/NjBYMTIw/z/Nw0AAOSwa2lc7vvt/$_1.JPG?set_id=8800004005",
+    "logoUrl": "https://i.ebayimg.com/00/s/ABC123=/z/DEF456/$_26.JPG",
     "contacts": [
       {
         "type": "NEW_VEHICLES",
         "email": "C4184",
         "phoneNumbers": [
-          "+1833-426-1175"
+          "0402229999"
         ],
-        "url": "https://www.agosselin.ca/used-inventory/index.htm"
+        "url": "https://www.dealership-example.com.au/new-cars"
       },
       {
         "type": "USED_VEHICLES",
         "phoneNumbers": [
-          "+1418-831-2050"
+          "0402229999"
         ],
-        "url": "http://WWW.AGOSSELIN.CA"
+        "url": "https://www.dealership-example.com.au/used-cars"
       }
     ],
     "subscriptions": [
       {
-        "opportunityId": "0064000000ptjCwAAI",
+        "opportunityId": "asdasdasd",
         "name": "New Car - ALC Placeholder",
-        "description": "0014000000Y5pFcAAJ",
+        "description": "fghfghfjfgjhfg",
         "quantity": 1,
         "lengthMonths": 57,
         "tierLimit": 0,
@@ -112,7 +112,7 @@
     ],
     "activeSubscriptions": [
       {
-        "opportunityId": "0061W00001GLfZlQAL",
+        "opportunityId": "2344564675685",
         "name": "Business Package - Group 3 - FCA New Car",
         "type": "NEW_VEHICLES",
         "bundle": "BUSINESS",
@@ -132,9 +132,9 @@
         "endDate": "2022-10-31T00:00:00Z"
       },
       {
-        "opportunityId": "0064000000ptjCwAAI",
+        "opportunityId": "87652334456787986756434",
         "name": "New Car - ALC Placeholder",
-        "description": "0014000000Y5pFcAAJ",
+        "description": "asdfghjhgfdsadsfghj",
         "quantity": 1,
         "lengthMonths": 57,
         "tierLimit": 0,
@@ -146,20 +146,20 @@
       }
     ],
     "additionalFields": {
-      "salesforceId": "0014000000Y5pFc",
-      "trackingNumberNew": "+1833-426-1175",
-      "ringToUsed": "+1418-831-2050",
-      "ringToNew": "+1418-831-2050",
+      "salesforceId": "dasadsadsasadassadsasadsaddsasadda",
+      "trackingNumberNew": "0402229999111",
+      "ringToUsed": "0402229999222",
+      "ringToNew": "0402229999333",
       "emailLeadNew": "C4184",
       "emailLeadFormatUsed": "PlainHtml",
       "emailLeadFormatNew": "Shift",
-      "financeContactFirstName": "Annélie",
+      "financeContactFirstName": "John",
       "financeContactLastName": "New Car manager*",
-      "financeContactPhone": "+1418-831-2050",
-      "postingCityName": "Québec City",
+      "financeContactPhone": "+1234-567-890",
+      "postingCityName": "City",
       "postingCityLocationId": "1700124",
-      "postingCityLat": "46.81274",
-      "postingCityLong": "-71.21935",
+      "postingCityLat": "-34.874885",
+      "postingCityLong": "138.628385",
       "autoIndustry": "Passenger Vehicles",
       "newOem": "FCA",
       "newOemId": "FCA_C4184",
