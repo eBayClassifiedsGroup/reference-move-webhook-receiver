@@ -48,7 +48,7 @@ public class EnrichedListingEvent implements WebhookPayload {
     }
 
     @JsonIgnore
-    public String getListingId() {
+    public String getEntityId() {
         return Optional.ofNullable(getMostRecentListing()).map(Listing::getId).orElse(null);
     }
 

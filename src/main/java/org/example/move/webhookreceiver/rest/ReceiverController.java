@@ -6,11 +6,13 @@
 //------------------------------------------------------------------
 package org.example.move.webhookreceiver.rest;
 
+import ecg.move.sellermodel.dealer.DealerLogMessageV2;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.move.webhookreceiver.rest.model.DealersEvent;
 import org.example.move.webhookreceiver.rest.model.EventWrapper;
 import org.example.move.webhookreceiver.rest.model.WebhookEventType;
 import org.example.move.webhookreceiver.rest.model.EnrichedListingEvent;
@@ -39,10 +41,10 @@ public class ReceiverController {
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Webhook receiver for event type LISTING.")
-    public ResponseEntity processListingEvent(
+    public ResponseEntity<Void> processListingEvent(
         @RequestHeader("signature") @ApiParam("Payload signature") String signature,
         @RequestBody @ApiParam("The event") EventWrapper<ListingEvent> event) {
-        if (!WebhookEventType.LISTING.equals(event.getEventType())) {
+        if (!WebhookEventType.LISTINGS.equals(event.getEventType())) {
             log.error("Unexpected event type received: {}", event.getEventType());
             return ResponseEntity.badRequest().build();
         }
@@ -65,7 +67,7 @@ public class ReceiverController {
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Webhook receiver for event type ENRICHED-LISTING.")
-    public ResponseEntity processEnrichedListingEvent(
+    public ResponseEntity<Void> processEnrichedListingEvent(
         @RequestHeader("signature") @ApiParam("Payload signature") String signature,
         @RequestBody @ApiParam("The event") EventWrapper<EnrichedListingEvent> event
     ) {
@@ -89,6 +91,29 @@ public class ReceiverController {
         return ResponseEntity.ok().header(LINK_HEADER_NAME, linkHeader).build();
     }
 
+    @PostMapping(value = "/webhook/dealer",
+        consumes = MediaType.APPLICATION_JSON_VALUE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Webhook receiver for event type DEALER.")
+    public ResponseEntity<Void> processDealersEvent(
+        @RequestHeader("signature") @ApiParam("Payload signature") String signature,
+        @RequestBody @ApiParam("The event") EventWrapper<DealersEvent> event) {
+        if (!WebhookEventType.DEALERS.equals(event.getEventType())) {
+            log.error("Unexpected event type received: {}", event.getEventType());
+            return ResponseEntity.badRequest().build();
+        }
+
+        if (event.getPayload() == null) {
+            log.error("No payload received for: {}", event.getEventType());
+            return ResponseEntity.badRequest().build();
+        }
+
+        log.info("Received event type '{}', payload: '{}'.", event.getEventType(), event.getPayload());
+        processDealerUpdate(event.getPayload().getDealer());
+
+        return ResponseEntity.ok().build();
+    }
+
     // this is a dummy method that returns static content
     private String processListing(ListingBeforeAfter listingPayload) {
 
@@ -100,5 +125,13 @@ public class ReceiverController {
         String localListingVehicleInformationPageUrl = "http://www.marketplace.com/id=" + localListingId;
 
         return linkHeaderCreator.createHeader(localListingId, localListingVehicleInformationPageUrl);
+    }
+
+
+    // this is a dummy method that ingests a dealer entity update
+    private void processDealerUpdate(DealerLogMessageV2 dealerUpdate) {
+        /*
+            your code here
+         */
     }
 }

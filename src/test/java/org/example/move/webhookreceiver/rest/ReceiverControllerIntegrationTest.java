@@ -51,7 +51,7 @@ class ReceiverControllerIntegrationTest extends IntegrationTestBase {
     void enriched_listing_can_be_posted() throws JsonProcessingException {
         // given
         EnrichedListingEvent enrichedListingEvent = enrichedListingEvent().getPayload();
-        String listingId = enrichedListingEvent.getListingId();
+        String listingId = enrichedListingEvent.getEntityId();
 
         //when
         ResponseEntity<?> response = postEnrichedListingCreate(enrichedListingEvent);
@@ -142,7 +142,7 @@ class ReceiverControllerIntegrationTest extends IntegrationTestBase {
         }
     }
 
-    private String readResourceFile(String resource) throws URISyntaxException, IOException {
+    static String readResourceFile(String resource) throws URISyntaxException, IOException {
         final Path resourcePath = Paths.get(ClassLoader.getSystemResource(resource).toURI());
         return new String(Files.readAllBytes(resourcePath));
     }

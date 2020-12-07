@@ -9,36 +9,30 @@ package org.example.move.webhookreceiver.rest.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ecg.move.sellermodel.listing.Listing;
+import ecg.move.sellermodel.dealer.DealerLogMessageV2;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.move.webhookreceiver.movemodel.listing.ListingBeforeAfter;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ListingEvent implements WebhookPayload {
+public class DealersEvent implements WebhookPayload {
 
-    @JsonProperty("listing")
-    private ListingBeforeAfter beforeAfter;
+    @JsonProperty("payload")
+    private DealerLogMessageV2 dealer;
 
     @JsonIgnore
     public String getForeignId() {
-        return Optional.ofNullable(getMostRecentListing()).map(Listing::getForeignId).orElse(null);
+        return Optional.ofNullable(getDealer()).map(DealerLogMessageV2::getForeignId).orElse(null);
     }
 
     @JsonIgnore
     public String getEntityId() {
-        return Optional.ofNullable(getMostRecentListing()).map(Listing::getId).orElse(null);
-    }
-
-    @JsonIgnore
-    private Listing getMostRecentListing() {
-        return getBeforeAfter().getNewState()  != null ? getBeforeAfter().getNewState() : getBeforeAfter().getOldState();
+        return Optional.ofNullable(getDealer()).map(DealerLogMessageV2::getId).orElse(null);
     }
 }

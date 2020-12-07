@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public enum WebhookEventType {
 
     ENRICHED_LISTING("enriched-listings"),
-    LISTING("listings");
+    LISTINGS("listings"),
+    DEALERS("dealers");
 
     private String value;
 

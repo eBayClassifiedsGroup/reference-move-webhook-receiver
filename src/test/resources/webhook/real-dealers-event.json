@@ -1,0 +1,183 @@
+{
+  "eventType": "dealers",
+  "timestamp": "2020-12-07T09:13:38Z",
+  "payload": {
+    "id": "move-ca.14031",
+    "version": 1505,
+    "name": "Automobiles A Gosselin Incorporated",
+    "foreignId": "14031",
+    "tenantId": "move-ca",
+    "partnerName": "kijijikitcanada",
+    "chatId": "14031",
+    "locations": [
+      {
+        "street": "1279 route Marie-Victorin",
+        "zipCode": "G7A 4G3",
+        "city": "Saint-Nicolas",
+        "province": "QC",
+        "country": "CA",
+        "geoCoord": {
+          "latitude": 46.7027454,
+          "longitude": -71.3872277
+        },
+        "postingGeoCoord": {
+          "latitude": 46.81274,
+          "longitude": -71.21935
+        }
+      }
+    ],
+    "logoUrl": "https://i.ebayimg.com/00/s/NjBYMTIw/z/Nw0AAOSwa2lc7vvt/$_1.JPG?set_id=8800004005",
+    "contacts": [
+      {
+        "type": "NEW_VEHICLES",
+        "email": "C4184",
+        "phoneNumbers": [
+          "+1833-426-1175"
+        ],
+        "url": "https://www.agosselin.ca/used-inventory/index.htm"
+      },
+      {
+        "type": "USED_VEHICLES",
+        "phoneNumbers": [
+          "+1418-831-2050"
+        ],
+        "url": "http://WWW.AGOSSELIN.CA"
+      }
+    ],
+    "subscriptions": [
+      {
+        "opportunityId": "0064000000ptjCwAAI",
+        "name": "New Car - ALC Placeholder",
+        "description": "0014000000Y5pFcAAJ",
+        "quantity": 1,
+        "lengthMonths": 57,
+        "tierLimit": 0,
+        "bumpUps": 0,
+        "topAds": 0,
+        "horizontalAddOns": [],
+        "startDate": "2017-08-01T00:00:00Z",
+        "endDate": "2022-04-30T00:00:00Z"
+      },
+      {
+        "opportunityId": "0061W00001GLfZlQAL",
+        "name": "Business Package - Group 3 - FCA New Car",
+        "type": "NEW_VEHICLES",
+        "bundle": "BUSINESS",
+        "lengthMonths": 36,
+        "tierLimit": 20000,
+        "bumpUps": 0,
+        "topAds": 0,
+        "addOns": [
+          "CALL_TRACKING",
+          "FINANCE_DRIVER",
+          "DEALER_PAGE_BASIC"
+        ],
+        "horizontalAddOns": [
+          "CREDIT_APPLICATION"
+        ],
+        "startDate": "2019-11-01T00:00:00Z",
+        "endDate": "2022-10-31T00:00:00Z"
+      }
+    ],
+    "addOns": [
+      "DEALER_PAGE_BASIC",
+      "CALL_TRACKING",
+      "FINANCE_DRIVER"
+    ],
+    "activeAddOns": [
+      {
+        "type": "NEW_VEHICLES",
+        "values": [
+          "DEALER_PAGE_BASIC",
+          "CALL_TRACKING",
+          "FINANCE_DRIVER"
+        ]
+      },
+      {
+        "type": "USED_VEHICLES",
+        "values": []
+      }
+    ],
+    "horizontalActiveAddOns": [
+      {
+        "type": "NEW_VEHICLES",
+        "values": [
+          "CREDIT_APPLICATION"
+        ]
+      },
+      {
+        "type": "USED_VEHICLES",
+        "values": []
+      }
+    ],
+    "activeSubscriptions": [
+      {
+        "opportunityId": "0061W00001GLfZlQAL",
+        "name": "Business Package - Group 3 - FCA New Car",
+        "type": "NEW_VEHICLES",
+        "bundle": "BUSINESS",
+        "lengthMonths": 36,
+        "tierLimit": 20000,
+        "bumpUps": 0,
+        "topAds": 0,
+        "addOns": [
+          "CALL_TRACKING",
+          "FINANCE_DRIVER",
+          "DEALER_PAGE_BASIC"
+        ],
+        "horizontalAddOns": [
+          "CREDIT_APPLICATION"
+        ],
+        "startDate": "2019-11-01T00:00:00Z",
+        "endDate": "2022-10-31T00:00:00Z"
+      },
+      {
+        "opportunityId": "0064000000ptjCwAAI",
+        "name": "New Car - ALC Placeholder",
+        "description": "0014000000Y5pFcAAJ",
+        "quantity": 1,
+        "lengthMonths": 57,
+        "tierLimit": 0,
+        "bumpUps": 0,
+        "topAds": 0,
+        "horizontalAddOns": [],
+        "startDate": "2017-08-01T00:00:00Z",
+        "endDate": "2022-04-30T00:00:00Z"
+      }
+    ],
+    "additionalFields": {
+      "salesforceId": "0014000000Y5pFc",
+      "trackingNumberNew": "+1833-426-1175",
+      "ringToUsed": "+1418-831-2050",
+      "ringToNew": "+1418-831-2050",
+      "emailLeadNew": "C4184",
+      "emailLeadFormatUsed": "PlainHtml",
+      "emailLeadFormatNew": "Shift",
+      "financeContactFirstName": "Annélie",
+      "financeContactLastName": "New Car manager*",
+      "financeContactPhone": "+1418-831-2050",
+      "postingCityName": "Québec City",
+      "postingCityLocationId": "1700124",
+      "postingCityLat": "46.81274",
+      "postingCityLong": "-71.21935",
+      "autoIndustry": "Passenger Vehicles",
+      "newOem": "FCA",
+      "newOemId": "FCA_C4184",
+      "newCarMake": [
+        "Chrysler"
+      ],
+      "language": "French",
+      "chromeImageBackup": true,
+      "automaticVinDecodeUsed": true,
+      "automaticVinDecodeNew": true,
+      "holdDelivery": false,
+      "hasPhotoAi": false,
+      "financeDriverOptOut": false,
+      "status": "Active",
+      "relatedAccountIds": []
+    },
+    "createdDate": "2011-04-11T12:54:02Z",
+    "migrated": true,
+    "active": true
+  }
+}
