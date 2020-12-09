@@ -1,0 +1,16 @@
+{
+  "eventType": "listing-url",
+  "payload": {
+    "listingId": "1234",
+    "clientId": "some-client-id",
+    "marketplaceId": "example-marketplace-ca",
+    "marketplaceListingId": "12345",
+    "urls": [
+      {
+        "language" : "en",
+        "type" : "directUrl",
+        "url": "http://example-marketplace.ca/12345"
+      }
+    ]
+  }
+}

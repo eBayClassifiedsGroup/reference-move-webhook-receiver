@@ -13,6 +13,7 @@ public enum WebhookEventType {
 
     ENRICHED_LISTING("enriched-listings"),
     LISTINGS("listings"),
+    LISTING_URL("listing-url"),
     DEALERS("dealers");
 
     private String value;

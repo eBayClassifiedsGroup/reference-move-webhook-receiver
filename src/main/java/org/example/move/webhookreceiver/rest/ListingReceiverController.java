@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/")
-@Api(tags = {"Webhook Receiver"})
+@Api(tags = {"Listing Lifecycle Event Receiver"})
 @Slf4j
 public class ListingReceiverController {
 
