@@ -6,7 +6,7 @@
 //------------------------------------------------------------------
 package org.example.move.webhookreceiver.rest;
 
-import ecg.move.sellermodel.dealer.DealerLogMessageV2;
+import ecg.move.sellermodel.webhook.ListingUrl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -25,34 +25,37 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/")
-@Api(tags = {"Dealer Lifecycle Event Receiver"})
+@Api(tags = {"Listing Distribution Event Receiver"})
 @Slf4j
-public class DealerReceiverController {
+public class ListingUrlReceiverController {
 
-    @PostMapping(value = "/webhook/dealer",
+    @PostMapping(value = "/webhook/listing-url",
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
-    @ApiOperation(value = "Webhook receiver for event type DEALER.")
-    public ResponseEntity<Void> processDealersEvent(
+    @ApiOperation(value = "Webhook receiver for event type LISTING-URL. When subscribed to this type of event, you will"
+        + "be notified whenever a listing has been delivered to a marketplace."
+        + "Example: MoVe delivers to Marketplace A (this is you) and Marketplace B (this is not you). As soon as a "
+        + "listing has been delivered to Marketplace B, you'll receive a Listing-URL event that gives you the VIP URL"
+        + "of the listing in Marketplace A.")
+    public ResponseEntity<Void> processListingEvent(
         @RequestHeader("signature") @ApiParam("Payload signature") String signature,
-        @RequestBody @ApiParam("The event") EventWrapper<DealerLogMessageV2> event) {
-        if (!WebhookEventType.DEALERS.equals(event.getEventType())) {
+        @RequestBody @ApiParam("The event") EventWrapper<ListingUrl> event) {
+        if (!WebhookEventType.LISTING_URL.equals(event.getEventType())) {
             log.error("Unexpected event type received: {}", event.getEventType());
             return ResponseEntity.badRequest().build();
         }
 
-        if (event.getPayload() == null) {
+        ListingUrl payload = event.getPayload();
+        if (payload == null) {
             log.error("No payload received for: {}", event.getEventType());
             return ResponseEntity.badRequest().build();
         }
 
-        log.info("Received event type '{}', payload: '{}'.", event.getEventType(), event.getPayload());
-        processDealerUpdate(event.getPayload());
+        log.info("Received event: MoVe listing '#{}' has been dispatched to '{}', where it can be reached under '{}'.",
+            payload.getListingId(),
+            payload.getMarketplaceId(),
+            payload.getUrls().get(0).getUrl());
 
         return ResponseEntity.ok().build();
-    }
-
-    private void processDealerUpdate(DealerLogMessageV2 dealerUpdate) {
-        log.trace("Processing dealer {}", dealerUpdate.getId());
     }
 }

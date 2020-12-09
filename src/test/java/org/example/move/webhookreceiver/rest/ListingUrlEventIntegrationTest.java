@@ -14,7 +14,7 @@ import static org.springframework.http.HttpStatus.OK;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ecg.move.sellermodel.dealer.DealerLogMessageV2;
+import ecg.move.sellermodel.webhook.ListingUrl;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Date;
@@ -32,7 +32,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.CollectionUtils;
 
 @Slf4j
-class DealerEventIntegrationTest extends IntegrationTestBase {
+class ListingUrlEventIntegrationTest extends IntegrationTestBase {
 
     @Autowired
     HmacChecker signatureChecker;
@@ -43,28 +43,28 @@ class DealerEventIntegrationTest extends IntegrationTestBase {
     @Test
     void dealer_update_can_be_posted() throws JsonProcessingException {
         // given
-        DealerLogMessageV2 dealersEvent = aDealerEvent().getPayload();
+        ListingUrl listingUrlEvent = aListingUrlEvent().getPayload();
 
         //when
-        ResponseEntity<?> response = postDealerUpdate(dealersEvent);
+        ResponseEntity<?> response = postListingUrlEvent(listingUrlEvent);
 
         //then
         assertThat(response.getStatusCode()).isEqualTo(OK);
     }
 
-    private ResponseEntity<Void> postDealerUpdate(DealerLogMessageV2 event)
+    private ResponseEntity<Void> postListingUrlEvent(ListingUrl event)
         throws JsonProcessingException {
 
         EventWrapper payload = EventWrapper.builder()
             .payload(event)
-            .eventType(WebhookEventType.DEALERS)
+            .eventType(WebhookEventType.LISTING_URL)
             .timestamp(new Date())
             .build();
 
         String actualHmac = signatureChecker.createSignatureAsBase64String(objectMapper.writeValueAsString(payload));
 
         return rest.exchange(
-            "/webhook/dealer",
+            "/webhook/listing-url",
             POST,
             new HttpEntity<>(
                 payload,
@@ -75,13 +75,13 @@ class DealerEventIntegrationTest extends IntegrationTestBase {
             Void.class);
     }
 
-    private EventWrapper<DealerLogMessageV2> aDealerEvent() {
+    private EventWrapper<ListingUrl> aListingUrlEvent() {
 
         try {
-            TypeReference<EventWrapper<DealerLogMessageV2>> eventWrapperTypeReference = new TypeReference<>() {
+            TypeReference<EventWrapper<ListingUrl>> eventWrapperTypeReference = new TypeReference<>() {
             };
             return objectMapper
-                .readValue(readResourceFile("webhook/real-dealers-event.json"), eventWrapperTypeReference);
+                .readValue(readResourceFile("webhook/real-listing-url-event.json"), eventWrapperTypeReference);
         } catch (URISyntaxException | IOException e) {
             throw new RuntimeException(e);
         }
