@@ -6,14 +6,21 @@
 //------------------------------------------------------------------
 package org.example.move.webhookreceiver.rest;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.http.HttpMethod.POST;
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
-import static org.springframework.http.HttpStatus.OK;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
+import org.example.move.IntegrationTestBase;
+import org.example.move.webhookreceiver.movemodel.listing.ListingBeforeAfter;
+import org.example.move.webhookreceiver.rest.hmac.HmacChecker;
+import org.example.move.webhookreceiver.rest.listing.EnrichedListingEvent;
+import org.example.move.webhookreceiver.rest.listing.EnrichedListingEventEnvelope;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.CollectionUtils;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -23,18 +30,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import lombok.extern.slf4j.Slf4j;
-import org.example.move.IntegrationTestBase;
-import org.example.move.webhookreceiver.movemodel.listing.ListingBeforeAfter;
-import org.example.move.webhookreceiver.rest.hmac.HmacChecker;
-import org.example.move.webhookreceiver.rest.model.EnrichedListingEvent;
-import org.example.move.webhookreceiver.rest.model.EventWrapper;
-import org.example.move.webhookreceiver.rest.model.WebhookEventType;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.ResponseEntity;
-import org.springframework.util.CollectionUtils;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.OK;
 
 @SuppressWarnings( {"ConstantConditions", "OptionalUsedAsFieldOrParameterType"})
 @Slf4j
@@ -109,7 +109,7 @@ class ListingEventIntegrationTest extends IntegrationTestBase {
     private ResponseEntity<Void> enrichedListingCall(EnrichedListingEvent event, Optional<String> givenHmac)
         throws JsonProcessingException {
 
-        EventWrapper payload = EventWrapper.builder()
+        EnrichedListingEventEnvelope payload = EnrichedListingEventEnvelope.builder()
             .payload(event)
             .eventType(WebhookEventType.ENRICHED_LISTING)
             .timestamp(new Date())
@@ -129,10 +129,10 @@ class ListingEventIntegrationTest extends IntegrationTestBase {
             Void.class);
     }
 
-    private EventWrapper<EnrichedListingEvent> enrichedListingEvent() {
+    private EnrichedListingEventEnvelope enrichedListingEvent() {
         ObjectMapper om = new ObjectMapper();
         try {
-            TypeReference<EventWrapper<EnrichedListingEvent>> eventWrapperTypeReference = new TypeReference<>() {
+            TypeReference<EnrichedListingEventEnvelope> eventWrapperTypeReference = new TypeReference<>() {
             };
             return om
                 .readValue(readResourceFile("webhook/real-enriched-listing-event.json"), eventWrapperTypeReference);

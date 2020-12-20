@@ -74,7 +74,7 @@ public class SwaggerConfig {
 
     private ApiInfo createApiInfo() {
         return new ApiInfoBuilder()
-            .title("Webhook Receiver Example")
+            .title("Webhook Receiver")
             .build();
     }
 }

@@ -4,7 +4,7 @@
 //
 // This code is licensed under MIT license (see LICENSE for details)
 //------------------------------------------------------------------
-package org.example.move.webhookreceiver.rest.model;
+package org.example.move.webhookreceiver.rest;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
