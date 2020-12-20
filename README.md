@@ -29,7 +29,17 @@ At the bottom of the page your can browse through the MoVe API model, complete w
 ## Event Types
 
 MoVe is able to hand over a number of different events around the main business entities: listings, dealers and promotions.
-Speak to the MoVe integration team to negotiate which events you want to receive.
+Speak to the MoVe integration team to negotiate which events you want to receive. Following you will find a short description of each event type and pointers into the implementation.
+
+
+| Event Type | Json Payload Example | Type Class | Integration Test Example | Controller Example Impl |
+| -------------- | --------- | ---------- | ---------- | ---------- |
+| Listings | [real-listing-event.json](./src/test/resources/webhook/real-listing-event.json) | [Listing.java](./build/gen-sellermodel/src/gen/java/ecg/move/sellermodel/listing/Listing.java) | [ListingEventIntegrationTest.java](./src/test/java/org/example/move/webhookreceiver/rest/ListingEventIntegrationTest.java) | [ListingReceiverController.java](./src/main/java/org/example/move/webhookreceiver/rest/listing/ListingReceiverController.java) |
+| Dealers | [real-dealers-event.json](./src/test/resources/webhook/real-dealers-event.json) | [DealerLogMessageV2.java](./build/gen-sellermodel/src/gen/java/ecg/move/sellermodel/dealer/DealerLogMessageV2.java) | [DealerEventIntegrationTest.java](./src/test/java/org/example/move/webhookreceiver/rest/DealerEventIntegrationTest.java) | [DealerReceiverController.java](./src/main/java/org/example/move/webhookreceiver/rest/dealer/DealerReceiverController.java) |
+| Promotions | TODO | TODO | TODO | TODO |
+| Enriched Listings | [real-enriched-listing-event.json](./src/test/resources/webhook/real-enriched-listing-event.json) | [EnrichedListingEvent.java](./src/main/java/org/example/move/webhookreceiver/rest/listing/EnrichedListingEvent.java) | [ListingEventIntegrationTest.java](./src/test/java/org/example/move/webhookreceiver/rest/ListingEventIntegrationTest.java) |  [ListingReceiverController.java](./src/main/java/org/example/move/webhookreceiver/rest/listing/ListingReceiverController.java) |
+| Listing-Urls | [real-listing-url-event.json](./src/test/resources/webhook/real-listing-url-event.json) | [ListingUrl.java](./build/gen-sellermodel/src/gen/java/ecg/move/sellermodel/webhook/ListingUrl.java) | [ListingUrlEventIntegrationTest.java](./src/test/java/org/example/move/webhookreceiver/rest/ListingUrlEventIntegrationTest.java) | [ListingUrlReceiverController.java](./src/main/java/org/example/move/webhookreceiver/rest/listingurl/ListingUrlReceiverController.java) |
+
 
 ### Listings
 Listings are the central business entities within MoVe. They describe an item using a number of properties (e.g. an "Audi A4" with its exterior color, type of gearbox etc.). They also contain a reference to the seller, pricing information and other relevant data.
@@ -40,21 +50,9 @@ Listings are the central business entities within MoVe. They describe an item us
 
 ![listing flow](./listing-flow.png)
 
-Additional pointers:
-* [Example Listing Payload as JSON](./src/test/resources/webhook/real-listing-event.json)
-* [Listing Type with Description](./build/gen-sellermodel/src/gen/java/ecg/move/sellermodel/listing/Listing.java)
-* [Listing Event Integration Test](./src/test/java/org/example/move/webhookreceiver/rest/ListingEventIntegrationTest.java)
-* [Listing Event Receiver Controller](./src/main/java/org/example/move/webhookreceiver/rest/listing/ListingReceiverController.java)
-
 ### Dealers
 
 Dealers are commercial sellers. You can receive events for changes around a dealer entity like contact detail changes, subscription changes as well as lifecycle changes (like onboarding / offboarding).
-
-Additional pointers:
-* [Example Dealer Payload as JSON](./src/test/resources/webhook/real-dealers-event.json)
-* [Dealer Type with Description](./build/gen-sellermodel/src/gen/java/ecg/move/sellermodel/dealer/DealerLogMessageV2.java)
-* [Dealer Event Integration Test](./src/test/java/org/example/move/webhookreceiver/rest/DealerEventIntegrationTest.java)
-* [Dealer Event Receiver Controller](./src/main/java/org/example/move/webhookreceiver/rest/dealer/DealerReceiverController.java)
 
 ### Promotions
 
@@ -68,8 +66,9 @@ Enriched listings are a composite of the upper 3 events. They contain a listing,
 
 > Like with the listing event type, you are supposed to return your local listing id back as well as VIP URLs.
 
-Additional pointers:
-* [Example Enriched Listing Payload as JSON](./src/test/resources/webhook/real-enriched-listing-event.json)
-* [Enriched Listing Type with Description](./src/main/java/org/example/move/webhookreceiver/rest/listing/EnrichedListingEvent.java)
-* [Enriched Listing Event Integration Test](./src/test/java/org/example/move/webhookreceiver/rest/ListingEventIntegrationTest.java)
-* [Enriched Listing Event Receiver Controller](./src/main/java/org/example/move/webhookreceiver/rest/listing/ListingReceiverController.java)
+### Listing-Url
+
+MoVe Listings are dispatched to a variety of different receivers. In the Canadian tenant, this can include Kijiji.ca, kijijiautos.ca and others. If you are interested in knowing to which marketplaces a listing or enriched listing has been dispatched, subscribe to the `listing-url` event.
+This tells you the marketplace, the local listing id as well as the VIP URLs of the listing in that marketplace.
+
+![listing flow](./listing-url-flow.png)
