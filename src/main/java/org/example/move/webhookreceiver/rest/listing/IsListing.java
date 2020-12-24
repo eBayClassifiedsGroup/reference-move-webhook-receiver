@@ -4,9 +4,9 @@
 //
 // This code is licensed under MIT license (see LICENSE for details)
 //------------------------------------------------------------------
-package org.example.move.webhookreceiver.rest.model;
+package org.example.move.webhookreceiver.rest.listing;
 
-public interface WebhookPayload {
+public interface IsListing {
 
     String getForeignId();
 

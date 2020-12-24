@@ -4,7 +4,7 @@
 //
 // This code is licensed under MIT license (see LICENSE for details)
 //------------------------------------------------------------------
-package org.example.move.webhookreceiver.rest;
+package org.example.move.webhookreceiver.rest.listing;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

@@ -6,30 +6,30 @@
 //------------------------------------------------------------------
 package org.example.move.webhookreceiver.rest;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.example.move.webhookreceiver.rest.ListingEventIntegrationTest.readResourceFile;
-import static org.springframework.http.HttpMethod.POST;
-import static org.springframework.http.HttpStatus.OK;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ecg.move.sellermodel.dealer.DealerLogMessageV2;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.example.move.IntegrationTestBase;
+import org.example.move.webhookreceiver.rest.dealer.DealerEventEnvelope;
 import org.example.move.webhookreceiver.rest.hmac.HmacChecker;
-import org.example.move.webhookreceiver.rest.model.EventWrapper;
-import org.example.move.webhookreceiver.rest.model.WebhookEventType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.CollectionUtils;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.example.move.webhookreceiver.rest.ListingEventIntegrationTest.readResourceFile;
+import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpStatus.OK;
 
 @Slf4j
 class DealerEventIntegrationTest extends IntegrationTestBase {
@@ -55,7 +55,7 @@ class DealerEventIntegrationTest extends IntegrationTestBase {
     private ResponseEntity<Void> postDealerUpdate(DealerLogMessageV2 event)
         throws JsonProcessingException {
 
-        EventWrapper payload = EventWrapper.builder()
+        DealerEventEnvelope payload = DealerEventEnvelope.builder()
             .payload(event)
             .eventType(WebhookEventType.DEALERS)
             .timestamp(new Date())
@@ -75,10 +75,10 @@ class DealerEventIntegrationTest extends IntegrationTestBase {
             Void.class);
     }
 
-    private EventWrapper<DealerLogMessageV2> aDealerEvent() {
+    private DealerEventEnvelope aDealerEvent() {
 
         try {
-            TypeReference<EventWrapper<DealerLogMessageV2>> eventWrapperTypeReference = new TypeReference<>() {
+            TypeReference<DealerEventEnvelope> eventWrapperTypeReference = new TypeReference<>() {
             };
             return objectMapper
                 .readValue(readResourceFile("webhook/real-dealers-event.json"), eventWrapperTypeReference);

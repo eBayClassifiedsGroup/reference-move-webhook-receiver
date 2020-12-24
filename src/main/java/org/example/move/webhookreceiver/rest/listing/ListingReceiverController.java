@@ -4,7 +4,7 @@
 //
 // This code is licensed under MIT license (see LICENSE for details)
 //------------------------------------------------------------------
-package org.example.move.webhookreceiver.rest;
+package org.example.move.webhookreceiver.rest.listing;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -12,22 +12,18 @@ import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.move.webhookreceiver.movemodel.listing.ListingBeforeAfter;
-import org.example.move.webhookreceiver.rest.model.EnrichedListingEvent;
-import org.example.move.webhookreceiver.rest.model.EventWrapper;
-import org.example.move.webhookreceiver.rest.model.ListingEvent;
-import org.example.move.webhookreceiver.rest.model.WebhookEventType;
+import org.example.move.webhookreceiver.rest.WebhookEventType;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/")
-@Api(tags = {"Listing Lifecycle Event Receiver"})
+@Api(tags = {"Listing Lifecycle Event Receiver"}, description = "Receive listing updates. Comes in the flavors \"listing\" or \"enriched listing\", which also contains associated dealer data and promotions.")
 @Slf4j
 public class ListingReceiverController {
 
@@ -39,9 +35,7 @@ public class ListingReceiverController {
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Webhook receiver for event type LISTING.")
-    public ResponseEntity<Void> processListingEvent(
-        @RequestHeader("signature") @ApiParam("Payload signature") String signature,
-        @RequestBody @ApiParam("The event") EventWrapper<ListingEvent> event) {
+    public ResponseEntity<Void> processEvent(@RequestBody @ApiParam("Event envelope") ListingEventEnvelope event) {
         if (!WebhookEventType.LISTINGS.equals(event.getEventType())) {
             log.error("Unexpected event type received: {}", event.getEventType());
             return ResponseEntity.badRequest().build();
@@ -65,9 +59,8 @@ public class ListingReceiverController {
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Webhook receiver for event type ENRICHED-LISTING.")
-    public ResponseEntity<Void> processEnrichedListingEvent(
-        @RequestHeader("signature") @ApiParam("Payload signature") String signature,
-        @RequestBody @ApiParam("The event") EventWrapper<EnrichedListingEvent> event
+    public ResponseEntity<Void> processEvent(
+        @RequestBody @ApiParam("Event envelope") EnrichedListingEventEnvelope event
     ) {
 
         if (!WebhookEventType.ENRICHED_LISTING.equals(event.getEventType())) {
