@@ -78,7 +78,7 @@ class ListingUrlEventIntegrationTest extends IntegrationTestBase {
     private ListingUrlEventEnvelope aListingUrlEvent() {
 
         try {
-            TypeReference<ListingUrlEventEnvelope> eventWrapperTypeReference = new TypeReference<>() {
+            TypeReference<ListingUrlEventEnvelope> eventEnvelopeReference = new TypeReference<>() {
             };
             return objectMapper
                 .readValue(readResourceFile("webhook/real-listing-url-event.json"), eventWrapperTypeReference);
