@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/")
-@Api(tags = {"Listing Lifecycle Event Receiver"}, description = "Receive listing updates. Comes in the flavors \"listing\" and \"enriched listing\", which also contains associated dealer data and promotions.")
+@Api(tags = {"Listing Lifecycle Event Receiver"}, description = "Receive listing updates. Comes in the flavors \"listing\" or \"enriched listing\", which also contains associated dealer data and promotions.")
 @Slf4j
 public class ListingReceiverController {
 
