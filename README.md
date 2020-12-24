@@ -21,7 +21,7 @@ The service is stateless and can be started locally by running `./gradlew clean 
 
 This will open Swagger UI, which is a simple REST client that you can use to publish events into the service and see how it reacts.
 
-At the bottom of the page your can browse through the MoVe API model, complete with examples, validation rules and description of semantics. Make sure to check those out to map incoming data to your internal model.
+At the bottom of the page you can browse through the MoVe API model, complete with examples, validation rules and description of semantics. Make sure to check those out to map incoming data to your internal model.
 
 ![Swagger UI as a source to inspect MoVe's domain model](./use-swagger-to-inspect-domain-model.png)
 
