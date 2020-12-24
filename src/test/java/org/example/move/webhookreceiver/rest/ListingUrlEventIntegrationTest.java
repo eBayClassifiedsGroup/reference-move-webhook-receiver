@@ -78,10 +78,10 @@ class ListingUrlEventIntegrationTest extends IntegrationTestBase {
     private ListingUrlEventEnvelope aListingUrlEvent() {
 
         try {
-            TypeReference<ListingUrlEventEnvelope> eventEnvelopeReference = new TypeReference<>() {
+            TypeReference<ListingUrlEventEnvelope> event = new TypeReference<>() {
             };
             return objectMapper
-                .readValue(readResourceFile("webhook/real-listing-url-event.json"), eventWrapperTypeReference);
+                .readValue(readResourceFile("webhook/real-listing-url-event.json"), event);
         } catch (URISyntaxException | IOException e) {
             throw new RuntimeException(e);
         }
