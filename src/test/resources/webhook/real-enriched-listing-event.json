@@ -362,14 +362,20 @@
     },
     "promotions": [
       {
-      "id": "1",
+      "id": "14356319",
       "promotion": "inline-listing",
-      "active": false
+      "active": false,
+      "startDate": "2020-12-24'T'12:10:0'Z'",
+      "endDate": "2020-12-26'T'19:00:00'Z'",
+      "updatedDate": "2020-12-25'T'12:00:00'Z'"
       },
       {
-        "id": "2",
+        "id": "14356319",
         "promotion": "top-ad",
-        "active": false
+        "active": false,
+        "startDate": "2020-12-24'T'12:10:0'Z'",
+        "endDate": "2020-12-26'T'19:00:00'Z'",
+        "updatedDate": "2020-12-25'T'12:00:00'Z'"
       }]
   }
 }
