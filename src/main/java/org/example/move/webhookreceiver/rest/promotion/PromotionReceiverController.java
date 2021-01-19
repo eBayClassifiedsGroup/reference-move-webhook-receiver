@@ -1,5 +1,5 @@
 //------------------------------------------------------------------
-// Copyright 2020 mobile.de GmbH.
+// Copyright 2021 mobile.de GmbH.
 // Author/Developer: Philipp Bartsch
 //
 // This code is licensed under MIT license (see LICENSE for details)
