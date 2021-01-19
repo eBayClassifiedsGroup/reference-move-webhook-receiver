@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import ecg.move.sellermodel.dealer.DealerLogMessageV2;
 import ecg.move.sellermodel.listing.Listing;
-import ecg.move.sellermodel.promotion.PublicPromotionModel;
+import ecg.move.sellermodel.promotion.PublicPromotionShortModel;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,7 +35,7 @@ public class EnrichedListingEvent implements IsListing {
     private DealerLogMessageV2 dealer;
 
     @JsonProperty("promotions")
-    private PublicPromotionModel[] promotions;
+    private PublicPromotionShortModel[] promotions;
 
     @JsonIgnore
     public String getForeignId() {

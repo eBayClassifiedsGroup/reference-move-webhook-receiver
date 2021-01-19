@@ -14,7 +14,9 @@ public enum WebhookEventType {
     ENRICHED_LISTING("enriched-listings"),
     LISTINGS("listings"),
     LISTING_URL("listing-url"),
-    DEALERS("dealers");
+    DEALERS("dealers"),
+    PROMOTIONS("promotions")
+    ;
 
     private String value;
 
