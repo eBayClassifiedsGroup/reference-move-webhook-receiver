@@ -128,6 +128,23 @@ task generateDealerPojos(type: org.openapitools.generator.gradle.plugin.tasks.Ge
     logToStderr = true
 }
 
+task generatePromotionPojos(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask){
+    inputSpec = "https://api.ecgmove.com/docs/spec/promotions".toString()
+    modelPackage = "ecg.move.sellermodel.promotion".toString()
+    generatorName = "jaxrs-jersey"
+    outputDir = "$buildDir/gen-sellermodel".toString()
+    apiPackage = "ignorethis"
+    invokerPackage = "ignorethis"
+    modelPackage = "ecg.move.sellermodel.promotion"
+    configOptions = [
+            dateLibrary: "legacy"
+    ]
+    systemProperties = [
+            modelDocs: "false"
+    ]
+    logToStderr = true
+}
+
 task generateWebhookPojos(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask){
     inputSpec = "https://api.ecgmove.com/docs/spec/webhook".toString()
     modelPackage = "ecg.move.sellermodel.webhook".toString()
@@ -145,7 +162,7 @@ task generateWebhookPojos(type: org.openapitools.generator.gradle.plugin.tasks.G
     logToStderr = true
 }
 
-task deleteUnusedResults(dependsOn: ['generateListingPojos', 'generateDealerPojos', 'generateWebhookPojos'], type: Delete) {
+task deleteUnusedResults(dependsOn: ['generateListingPojos', 'generatePromotionPojos', 'generateDealerPojos', 'generateWebhookPojos'], type: Delete) {
     // this removes a number of generated stuff that is not needed (and in parts broken)
     delete "$buildDir/gen-sellermodel/src/gen/java/ecg/move/sellermodel/ignorethis",
             "$buildDir/gen-sellermodel/src/gen/java/ecg/move/sellermodel/dealer/PagedResultDealerDetailResponseV2.java",

@@ -36,7 +36,7 @@ Speak to the MoVe integration team to negotiate which events you want to receive
 | -------------- | --------- | ---------- | ---------- | ---------- |
 | Listings | [real-listing-event.json](./src/test/resources/webhook/real-listing-event.json) | [Listing.java](./build/gen-sellermodel/src/gen/java/ecg/move/sellermodel/listing/Listing.java) | [ListingEventIntegrationTest.java](./src/test/java/org/example/move/webhookreceiver/rest/ListingEventIntegrationTest.java) | [ListingReceiverController.java](./src/main/java/org/example/move/webhookreceiver/rest/listing/ListingReceiverController.java) |
 | Dealers | [real-dealers-event.json](./src/test/resources/webhook/real-dealers-event.json) | [DealerLogMessageV2.java](./build/gen-sellermodel/src/gen/java/ecg/move/sellermodel/dealer/DealerLogMessageV2.java) | [DealerEventIntegrationTest.java](./src/test/java/org/example/move/webhookreceiver/rest/DealerEventIntegrationTest.java) | [DealerReceiverController.java](./src/main/java/org/example/move/webhookreceiver/rest/dealer/DealerReceiverController.java) |
-| Promotions | TODO | TODO | TODO | TODO |
+| Promotions | [real-promotion-event.json](./src/test/resources/webhook/real-promotion-event.json) | [PublicPromotionLargeModel.java](./build/gen-sellermodel/src/gen/java/ecg/move/sellermodel/promotion/PublicPromotionLargeModel.java) | [PromotionEventIntegrationTest.java](./src/test/java/org/example/move/webhookreceiver/rest/PromotionEventIntegrationTest.java) | [PromotionReceiverController.java](./src/main/java/org/example/move/webhookreceiver/rest/promotion/PromotionReceiverController.java) |
 | Enriched Listings | [real-enriched-listing-event.json](./src/test/resources/webhook/real-enriched-listing-event.json) | [EnrichedListingEvent.java](./src/main/java/org/example/move/webhookreceiver/rest/listing/EnrichedListingEvent.java) | [ListingEventIntegrationTest.java](./src/test/java/org/example/move/webhookreceiver/rest/ListingEventIntegrationTest.java) |  [ListingReceiverController.java](./src/main/java/org/example/move/webhookreceiver/rest/listing/ListingReceiverController.java) |
 | Listing-Urls | [real-listing-url-event.json](./src/test/resources/webhook/real-listing-url-event.json) | [ListingUrl.java](./build/gen-sellermodel/src/gen/java/ecg/move/sellermodel/webhook/ListingUrl.java) | [ListingUrlEventIntegrationTest.java](./src/test/java/org/example/move/webhookreceiver/rest/ListingUrlEventIntegrationTest.java) | [ListingUrlReceiverController.java](./src/main/java/org/example/move/webhookreceiver/rest/listingurl/ListingUrlReceiverController.java) |
 
@@ -56,9 +56,7 @@ Dealers are commercial sellers. You can receive events for changes around a deal
 
 ### Promotions
 
-Promotions are applied to listings to increase their visibility. Promotions are very simple entites: they reference the listings to which they apply, the type of promotion and a flag for whether the promotion is active or not.
-
-**This is currently not covered.**
+Promotions are applied to listings to increase their visibility. Promotions are simple entities: they reference the listings to which they apply, the type of promotion and a flag for whether the promotion is active or not and some metadata.
 
 ### Enriched Listings
 

@@ -1,0 +1,20 @@
+{
+  "eventType": "promotions",
+  "timestamp": "2021-01-18T16:35:22Z",
+  "payload": {
+    "promotionId": "1234567890abcdefghijk",
+    "promotionPartnerName": "move-ca-syi",
+    "listingId": "12345",
+    "listingForeignId": "someListingForeignId",
+    "listingPartnerName": "move-ca-syi",
+    "promotionType": "TOP_AD_3",
+    "startDate": "2021-01-15T16:33:57Z",
+    "endDate": "2021-01-18T16:33:57Z",
+    "duration": {
+      "interval": 3,
+      "timeUnit": "DAYS"
+    },
+    "status": "EXPIRED",
+    "orderItemId": "1111c3d8f5bd1234549fa747"
+  }
+}
