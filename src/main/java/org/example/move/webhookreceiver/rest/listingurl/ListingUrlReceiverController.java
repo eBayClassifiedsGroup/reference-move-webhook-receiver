@@ -47,8 +47,10 @@ public class ListingUrlReceiverController {
             return ResponseEntity.badRequest().build();
         }
 
-        log.info("Received event: MoVe listing '#{}' has been dispatched to '{}', where it can be reached under '{}'.",
+        log.info("Received event: MoVe listing '#{}', upstream known as {}/{}, has been dispatched to '{}', where it can be reached under '{}'.",
             payload.getListingId(),
+            payload.getPartnerId(),
+            payload.getPartnerListingId(),
             payload.getMarketplaceId(),
             payload.getUrls().get(0).getUrl());
 
