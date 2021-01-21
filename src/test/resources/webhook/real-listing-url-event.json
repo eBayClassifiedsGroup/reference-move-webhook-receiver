@@ -3,8 +3,12 @@
   "payload": {
     "listingId": "1234",
     "clientId": "some-client-id",
-    "marketplaceId": "example-marketplace-ca",
+    "marketplaceId": "gumtree-au",
     "marketplaceListingId": "12345",
+    "partnerListingId" : "987654321",
+    "partnerId": "dealer-solutions",
+    "sellerForeignId": "abc123",
+    "sellerType": "DEALER",
     "urls": [
       {
         "language" : "en",
