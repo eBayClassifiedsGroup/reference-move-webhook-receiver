@@ -271,6 +271,10 @@
         "Sa 09:00-16:00",
         "Su closed"
       ],
+      "memberUnits": [
+        "GTAUSCA",
+        "GTAUSKO"
+      ],
       "additionalOperatingHours": "",
       "locations": [
         {
