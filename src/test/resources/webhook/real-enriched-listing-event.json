@@ -271,10 +271,6 @@
         "Sa 09:00-16:00",
         "Su closed"
       ],
-      "memberUnits": [
-        "GTAUSCA",
-        "GTAUSKO"
-      ],
       "additionalOperatingHours": "",
       "locations": [
         {
@@ -289,6 +285,11 @@
           }
         }
       ],
+      "memberUnits": [{
+        "marketplaceForeignId": "12345",
+        "memberUnit": "GTAUSCA",
+        "active": true
+      }],
       "logoUrl": "https://i.ebayimg.com/00/s/ABC123=/z/DEF456/$_26.JPG",
       "contacts": [
         {

@@ -9,6 +9,11 @@
     "tenantId": "move-au",
     "partnerName": "move-dealer-tool-au",
     "chatId": "123123123123",
+    "memberUnits": [{
+      "marketplaceForeignId": "12345",
+      "memberUnit": "GTAUSCA",
+      "active": true
+    }],
     "locations": [
       {
         "street": "100 Main Road",
