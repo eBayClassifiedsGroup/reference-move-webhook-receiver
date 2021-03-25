@@ -6,6 +6,8 @@
 //------------------------------------------------------------------
 package org.example.move.webhookreceiver.rest.hmac;
 
+import static javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
+
 import java.nio.charset.Charset;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,12 +32,11 @@ public class HmacEnforceInterceptor implements HandlerInterceptor {
             boolean matches = signatureChecker.isMatchingSignature(givenSignature, message);
             if (!matches) {
                 response.reset();
-                response.sendError(400, "Invalid signature");
+                response.sendError(SC_UNAUTHORIZED, "Invalid signature");
             }
             return matches;
         } else {
             return true;
         }
     }
-
 }
