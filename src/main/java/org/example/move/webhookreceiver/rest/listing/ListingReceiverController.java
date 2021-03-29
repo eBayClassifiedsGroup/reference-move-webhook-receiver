@@ -6,8 +6,8 @@
 //------------------------------------------------------------------
 package org.example.move.webhookreceiver.rest.listing;
 
-import static ecg.move.sellermodel.webhook.BadRequestModel.ErrorCodeEnum.INVALID_ENRICHED_LISTING;
-import static ecg.move.sellermodel.webhook.BadRequestModel.ErrorCodeEnum.INVALID_LISTING;
+import static ecg.move.sellermodel.webhook.BadRequestModel.ErrorCodeEnum.INVALID_DATA;
+import static ecg.move.sellermodel.webhook.BadRequestModel.ErrorCodeEnum.MESSAGE_ILL_FORMATTED;
 import static ecg.move.sellermodel.webhook.SpecificError.ErrorCodeEnum.INACTIVE_SELLER;
 import static ecg.move.sellermodel.webhook.SpecificError.ErrorCodeEnum.UNKNOWN_SELLER;
 
@@ -63,7 +63,7 @@ public class ListingReceiverController {
             log.error("No payload received for: {}", event.getEventType());
             return ResponseEntity
                 .badRequest()
-                .body(createMessageNotUnderstoodError(INVALID_LISTING));
+                .body(createMessageNotUnderstoodError(MESSAGE_ILL_FORMATTED));
         }
 
         String sellerId = event.getPayload().getBeforeAfter().getNewState().getSeller().getForeignId();
@@ -71,14 +71,14 @@ public class ListingReceiverController {
             log.error("Received payload for unknown dealer: {}", event.getEventType());
             return ResponseEntity
                 .badRequest()
-                .body(createSellerError(INVALID_LISTING, UNKNOWN_SELLER, sellerId));
+                .body(createSellerError(INVALID_DATA, UNKNOWN_SELLER, sellerId));
         }
 
         if (!isSellerActive(sellerId)) {
             log.error("Received payload for unknown dealer: {}", event.getEventType());
             return ResponseEntity
                 .badRequest()
-                .body(createSellerError(INVALID_LISTING, INACTIVE_SELLER, sellerId));
+                .body(createSellerError(INVALID_DATA, INACTIVE_SELLER, sellerId));
         }
 
         log.info("Received event type '{}', payload: '{}'.", event.getEventType(), event.getPayload());
@@ -103,7 +103,7 @@ public class ListingReceiverController {
             log.error("No payload received for: {}", event.getEventType());
             return ResponseEntity
                 .badRequest()
-                .body(createMessageNotUnderstoodError(INVALID_ENRICHED_LISTING));
+                .body(createMessageNotUnderstoodError(INVALID_DATA));
         }
 
         String sellerId = event.getPayload().getBeforeAfter().getNewState().getSeller().getForeignId();
@@ -111,14 +111,14 @@ public class ListingReceiverController {
             log.error("Received payload for unknown dealer: {}", event.getEventType());
             return ResponseEntity
                 .badRequest()
-                .body(createSellerError(INVALID_ENRICHED_LISTING, UNKNOWN_SELLER, sellerId));
+                .body(createSellerError(INVALID_DATA, UNKNOWN_SELLER, sellerId));
         }
 
         if (!isSellerActive(sellerId)) {
             log.error("Received payload for unknown dealer: {}", event.getEventType());
             return ResponseEntity
                 .badRequest()
-                .body(createSellerError(INVALID_ENRICHED_LISTING, INACTIVE_SELLER, sellerId));
+                .body(createSellerError(INVALID_DATA, INACTIVE_SELLER, sellerId));
         }
 
         log.info("Received event type '{}', payload: '{}'.", event.getEventType(), event.getPayload());
@@ -150,13 +150,9 @@ public class ListingReceiverController {
     }
 
     private BadRequestModel createMessageNotUnderstoodError(ErrorCodeEnum generalErrorCode) {
-        SpecificError specificError = new SpecificError();
-        specificError.setErrorCode(SpecificError.ErrorCodeEnum.OTHER_ERROR);
-        specificError.setMessage("The payload was malformed.");
-
         BadRequestModel model = new BadRequestModel();
         model.setErrorCode(generalErrorCode);
-        model.setSpecificErrors(List.of(specificError));
+        model.setSpecificErrors(List.of());
         return model;
     }
 
