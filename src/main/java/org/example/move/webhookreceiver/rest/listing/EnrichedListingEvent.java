@@ -18,6 +18,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.move.webhookreceiver.cpo.OemVerifiedCpo;
 import org.example.move.webhookreceiver.movemodel.listing.ListingBeforeAfter;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -36,6 +37,9 @@ public class EnrichedListingEvent implements IsListing {
 
     @JsonProperty("promotions")
     private PublicPromotionShortModel[] promotions;
+
+    @JsonProperty("oemVerifiedCpo")
+    private OemVerifiedCpo oemVerifiedCpo;
 
     @JsonIgnore
     public String getForeignId() {

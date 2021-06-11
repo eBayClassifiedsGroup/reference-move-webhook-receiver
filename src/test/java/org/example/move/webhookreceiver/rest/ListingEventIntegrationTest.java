@@ -77,7 +77,7 @@ class ListingEventIntegrationTest extends IntegrationTestBase {
 
         //then
         assertThat(response.getStatusCode()).isEqualTo(BAD_REQUEST);
-        assertThat(response.getBody().getErrorCode()).isEqualTo(ErrorCodeEnum.INVALID_DATA);
+        assertThat(response.getBody().getErrorCode()).isEqualTo(ErrorCodeEnum.OTHER_ERROR);
         assertThat(response.getBody().getSpecificErrors())
             .extracting(SpecificError::getErrorCode)
             .containsOnly(SpecificError.ErrorCodeEnum.UNKNOWN_SELLER);
@@ -95,7 +95,7 @@ class ListingEventIntegrationTest extends IntegrationTestBase {
 
         //then
         assertThat(response.getStatusCode()).isEqualTo(BAD_REQUEST);
-        assertThat(response.getBody().getErrorCode()).isEqualTo(ErrorCodeEnum.INVALID_DATA);
+        assertThat(response.getBody().getErrorCode()).isEqualTo(ErrorCodeEnum.OTHER_ERROR);
         assertThat(response.getBody().getSpecificErrors())
             .extracting(SpecificError::getErrorCode)
             .containsOnly(SpecificError.ErrorCodeEnum.INACTIVE_SELLER);
