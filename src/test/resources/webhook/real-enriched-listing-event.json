@@ -381,6 +381,9 @@
         "startDate": "2020-12-24'T'12:10:0'Z'",
         "endDate": "2020-12-26'T'19:00:00'Z'",
         "updatedDate": "2020-12-25'T'12:00:00'Z'"
-      }]
+      }],
+    "oemVerifiedCpo": {
+      "cpoProgramName": "toyota-au"
+    }
   }
 }
