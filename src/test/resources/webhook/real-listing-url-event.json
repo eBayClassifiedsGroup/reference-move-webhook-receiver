@@ -3,10 +3,10 @@
   "payload": {
     "listingId": "1234",
     "clientId": "some-client-id",
-    "marketplaceId": "gumtree-au",
+    "marketplaceId": "kijiji-ca",
     "marketplaceListingId": "12345",
     "partnerListingId" : "987654321",
-    "partnerId": "dealer-solutions",
+    "partnerId": "sm360",
     "sellerForeignId": "abc123",
     "sellerType": "DEALER",
     "urls": [

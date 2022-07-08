@@ -266,12 +266,6 @@
       "partnerName": "move-dealer-tool-au",
       "chatId": "123123123123",
       "description": "Welcome to Dealership.",
-      "openingHours": [
-        "Mo-Fr 09:00-17:00",
-        "Sa 09:00-16:00",
-        "Su closed"
-      ],
-      "additionalOperatingHours": "",
       "locations": [
         {
           "street": "100 Main Road",
@@ -285,11 +279,6 @@
           }
         }
       ],
-      "memberUnits": [{
-        "marketplaceForeignId": "12345",
-        "memberUnit": "GTAUSCA",
-        "active": true
-      }],
       "logoUrl": "https://i.ebayimg.com/00/s/ABC123=/z/DEF456/$_26.JPG",
       "contacts": [
         {
