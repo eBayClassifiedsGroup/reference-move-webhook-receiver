@@ -111,24 +111,7 @@
             "en"
           ]
         },
-        "modelRange": "NCP130R, 5D HATCHBACK, MULTI POINT F/INJ, 4 SP AUTOMATIC, 1299 CC, 1.3L, 4 cyl",
-        "vehicleCatalog": {
-          "nvic": "N0A11K"
-        },
-        "gumtreeAuMakeModelVariant": {
-          "make": "TOYOTA",
-          "model": "YARIS",
-          "otherVariants": [
-            "YRS",
-            "EDGE",
-            "ZR",
-            "ASCENT",
-            "YR",
-            "RUSH",
-            "YRX",
-            "SX"
-          ]
-        }
+        "modelRange": "NCP130R, 5D HATCHBACK, MULTI POINT F/INJ, 4 SP AUTOMATIC, 1299 CC, 1.3L, 4 cyl"
       },
       "oldState": {
         "id": "14356319",
@@ -238,24 +221,7 @@
             "en"
           ]
         },
-        "modelRange": "NCP130R, 5D HATCHBACK, MULTI POINT F/INJ, 4 SP AUTOMATIC, 1299 CC, 1.3L, 4 cyl",
-        "vehicleCatalog": {
-          "nvic": "N0A11K"
-        },
-        "gumtreeAuMakeModelVariant": {
-          "make": "TOYOTA",
-          "model": "YARIS",
-          "otherVariants": [
-            "YRS",
-            "EDGE",
-            "ZR",
-            "ASCENT",
-            "YR",
-            "RUSH",
-            "YRX",
-            "SX"
-          ]
-        }
+        "modelRange": "NCP130R, 5D HATCHBACK, MULTI POINT F/INJ, 4 SP AUTOMATIC, 1299 CC, 1.3L, 4 cyl"
       }
     },
     "dealer": {
